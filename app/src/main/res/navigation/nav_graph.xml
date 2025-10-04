@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_onboardingFragment1_to_onboardingFragment2"
             app:destination="@id/onboardingFragment2" />
+        <action
+            android:id="@+id/action_onboardingFragment1_to_gettingStartedFragment"
+            app:destination="@id/gettingStartedFragment" />
     </fragment>
 
     <fragment
@@ -29,10 +32,22 @@
         <action
             android:id="@+id/action_onboardingFragment2_to_onboardingFragment3"
             app:destination="@id/onboardingFragment3" />
+        <action
+            android:id="@+id/action_onboardingFragment2_to_gettingStartedFragment"
+            app:destination="@id/gettingStartedFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/onboardingFragment3"
         android:name="com.example.drivenextapp.ui.OnboardingFragment3"
-        android:label="Onboarding 3" />
+        android:label="Onboarding 3">
+        <action
+            android:id="@+id/action_onboardingFragment3_to_gettingStartedFragment"
+            app:destination="@id/gettingStartedFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gettingStartedFragment"
+        android:name="com.example.drivenextapp.ui.GettingStartedFragment"
+        android:label="Getting started" />
 </navigation>

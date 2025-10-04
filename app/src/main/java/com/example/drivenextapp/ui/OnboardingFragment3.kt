@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.drivenextapp.R
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textview.MaterialTextView
 
 class OnboardingFragment3 : Fragment() {
     override fun onCreateView(
@@ -13,5 +16,19 @@ class OnboardingFragment3 : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_onboarding_3, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<MaterialButton>(R.id.btnNext)
+            .setOnClickListener {
+                findNavController().navigate(R.id.action_onboardingFragment3_to_gettingStartedFragment)
+            }
+
+        view.findViewById<MaterialTextView>(R.id.btnSkip)
+            .setOnClickListener {
+                findNavController().navigate(R.id.action_onboardingFragment3_to_gettingStartedFragment)
+            }
     }
 }
