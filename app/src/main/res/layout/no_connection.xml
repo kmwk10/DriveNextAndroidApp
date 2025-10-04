@@ -25,20 +25,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Нет подключения\nк интернету"
+            android:text="@string/no_connection"
             android:textSize="24sp"
             android:textStyle="bold"
             android:lineSpacingExtra="24dp"
-            android:textColor="#1A1A1A"
+            android:textColor="@color/darkGray"
             android:gravity="center"
             android:layout_marginBottom="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Проверьте подключение и повторите попытку"
+            android:text="@string/connection_help"
             android:textSize="14sp"
-            android:textColor="#1A1A1A"
+            android:textColor="@color/darkGray"
             android:gravity="center"
             android:layout_marginBottom="32dp" />
     </LinearLayout>
@@ -47,9 +47,9 @@
         android:id="@+id/btnRetry"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Повторить попытку"
+        android:text="@string/try_again"
         android:textColor="@android:color/white"
-        android:backgroundTint="#2A1246"
+        android:backgroundTint="@color/violet"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

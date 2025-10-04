@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="60dp"
-        android:text="DriveNext"
-        android:textColor="#2A1246"
+        android:text="@string/app_name"
+        android:textColor="@color/violet"
         android:textSize="24sp"
         android:textStyle="bold"/>
 
@@ -21,9 +21,9 @@
         android:id="@+id/tvSlogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Поможем найти твою следующую поездку"
+        android:text="@string/slogan_1"
         android:textSize="14sp"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:alpha="0.7"
         android:gravity="center"/>
 
@@ -34,7 +34,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="52dp"
         android:src="@drawable/ic_splash_screen"
-        android:contentDescription="Логотип DriveNext"
+        android:contentDescription="@string/app_logo"
         android:layout_marginBottom="24dp"/>
 
     <com.google.android.material.button.MaterialButton
@@ -42,21 +42,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Войти"
-        android:textSize="16dp"
+        android:text="@string/log_in"
+        android:textSize="16sp"
         android:textColor="@android:color/white"
-        android:backgroundTint="#2A1246"
+        android:backgroundTint="@color/violet"
         app:cornerRadius="8dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Зарегистрироваться"
-        android:textSize="16dp"
-        android:textColor="#344054"
+        android:text="@string/register"
+        android:textSize="16sp"
+        android:textColor="@color/violet"
         android:backgroundTint="@color/white"
-        app:strokeColor="#D0D5DD"
+        app:strokeColor="@color/lightGrey"
         app:strokeWidth="1dp"
         app:cornerRadius="8dp" />
 </LinearLayout>

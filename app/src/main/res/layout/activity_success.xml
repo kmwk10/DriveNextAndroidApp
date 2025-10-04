@@ -8,10 +8,10 @@
         android:id="@+id/tvHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Пользуйтесь с удовольствием"
+        android:text="@string/enjoy"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#101828"
+        android:textColor="@color/violet"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -38,8 +38,8 @@
             android:id="@+id/tvCongratulations"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Поздравляем"
-            android:textColor="#1A1A1A"
+            android:text="@string/congratulations"
+            android:textColor="@color/darkGray"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginBottom="16dp"/>
@@ -48,18 +48,18 @@
             android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Вы успешно зарегистрировались.\nОбработка ваших персональных данных займет около двух часов. Спасибо за ожидание."
+            android:text="@string/congratulations_text"
             android:gravity="center"
             android:layout_marginBottom="40dp"
-            android:textColor="#1A1A1A"/>
+            android:textColor="@color/darkGray"/>
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Далее"
-        android:backgroundTint="#2A1246"
+        android:text="@string/next"
+        android:backgroundTint="@color/violet"
         android:textColor="@android:color/white"
         app:cornerRadius="8dp"
         android:layout_marginBottom="14dp"

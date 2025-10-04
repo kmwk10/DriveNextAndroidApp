@@ -20,9 +20,9 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Войдите в аккаунт"
+            android:text="@string/log_in_to_acc"
             android:textSize="24sp"
-            android:textColor="#1A1A1A"
+            android:textColor="@color/darkGray"
             android:textStyle="bold"
             android:layout_marginBottom="8dp"/>
 
@@ -30,8 +30,8 @@
             android:id="@+id/tvSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Пожалуйста, введите свои данные"
-            android:textColor="#667085"
+            android:text="@string/enter_details"
+            android:textColor="@color/blueGray"
             android:textSize="14sp"
             android:layout_marginBottom="60dp"/>
 
@@ -40,8 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:text="Электронная почта"
-            android:textColor="#404040"
+            android:text="@string/email"
+            android:textColor="@color/gray"
             android:textSize="14sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -49,8 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="#D0D5DD"
-            android:textColorHint="#667085"
+            app:boxStrokeColor="@color/lightGrey"
+            android:textColorHint="@color/blueGray"
             app:boxCornerRadiusTopStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="12dp"
-                android:hint="Введите электронную почту"
+                android:hint="@string/email_hint"
                 android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,8 +70,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:text="Пароль"
-            android:textColor="#404040"
+            android:text="@string/password"
+            android:textColor="@color/gray"
             android:textSize="14sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -79,10 +79,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="#D0D5DD"
+            app:boxStrokeColor="@color/lightGrey"
             app:endIconMode="password_toggle"
-            app:endIconTint="#D0D5DD"
-            android:textColorHint="#667085"
+            app:endIconTint="@color/lightGrey"
+            android:textColorHint="@color/blueGray"
             app:boxCornerRadiusTopStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
@@ -92,7 +92,7 @@
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Введите пароль"
+                android:hint="@string/password_hint"
                 android:inputType="textPassword"
                 android:paddingVertical="12dp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -101,8 +101,8 @@
             android:id="@+id/tvForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Забыли пароль?"
-            android:textColor="#2A1246"
+            android:text="@string/forgot_password"
+            android:textColor="@color/violet"
             android:textSize="14sp"
             android:layout_marginBottom="28dp"/>
 
@@ -111,21 +111,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Войти"
+            android:text="@string/log_in"
             android:textSize="14sp"
             android:textColor="@android:color/white"
-            android:backgroundTint="#2A1246"
+            android:backgroundTint="@color/violet"
             app:cornerRadius="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGoogle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Войти через Google"
+            android:text="@string/log_in_google"
             android:textSize="14sp"
-            android:textColor="#1A1A1A"
+            android:textColor="@color/darkGray"
             android:backgroundTint="@android:color/white"
-            app:strokeColor="#D0D5DD"
+            app:strokeColor="@color/lightGrey"
             app:strokeWidth="1dp"
             app:cornerRadius="8dp"
             app:icon="@drawable/ic_google_logo"
@@ -138,9 +138,9 @@
             android:id="@+id/tvRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Зарегистрироваться"
+            android:text="@string/register"
             android:textSize="14sp"
-            android:textColor="#2A1246"
+            android:textColor="@color/violet"
             android:layout_marginTop="8dp"/>
 
     </LinearLayout>

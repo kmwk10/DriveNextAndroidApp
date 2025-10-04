@@ -17,7 +17,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_arrow_back"
-            android:contentDescription="Назад"
+            android:contentDescription="@string/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -26,10 +26,10 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Создать аккаунт"
+            android:text="@string/create_acc"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#1A1A1A"
+            android:textColor="@color/darkGray"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,17 +50,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Электронная почта"
+            android:text="@string/email"
             android:textSize="14sp"
-            android:textColor="#404040"/>
+            android:textColor="@color/gray"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="#D0D5DD"
-            android:textColorHint="#667085"
+            app:boxStrokeColor="@color/lightGrey"
+            android:textColorHint="@color/blueGray"
             app:boxCornerRadiusTopStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
@@ -70,18 +70,17 @@
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Введите электронную почту"
+                android:hint="@string/email_hint"
                 android:paddingVertical="12dp"
                 android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Пароль -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Придумайте пароль"
+            android:text="@string/create_password"
             android:textSize="14sp"
-            android:textColor="#404040"/>
+            android:textColor="@color/gray"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordLayout"
@@ -89,10 +88,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="#D0D5DD"
-            android:textColorHint="#667085"
+            app:boxStrokeColor="@color/lightGrey"
+            android:textColorHint="@color/blueGray"
             app:endIconMode="password_toggle"
-            app:endIconTint="#D0D5DD"
+            app:endIconTint="@color/lightGrey"
             app:boxCornerRadiusTopStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
@@ -102,7 +101,7 @@
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Введите пароль"
+                android:hint="@string/password_hint"
                 android:paddingVertical="12dp"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -110,9 +109,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Повторите пароль"
+            android:text="@string/repeat_password"
             android:textSize="14sp"
-            android:textColor="#404040"/>
+            android:textColor="@color/gray"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/confirmPasswordLayout"
@@ -120,10 +119,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="#D0D5DD"
-            android:textColorHint="#667085"
+            app:boxStrokeColor="@color/lightGrey"
+            android:textColorHint="@color/blueGray"
             app:endIconMode="password_toggle"
-            app:endIconTint="#D0D5DD"
+            app:endIconTint="@color/lightGrey"
             app:boxCornerRadiusTopStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
@@ -133,7 +132,7 @@
                 android:id="@+id/etConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Повторите пароль"
+                android:hint="@string/repeat_password"
                 android:paddingVertical="12dp"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -142,10 +141,10 @@
             android:id="@+id/chkAgree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Я согласен с условиями обслуживания и политикой конфиденциальности"
+            android:text="@string/agreement"
             android:textSize="12sp"
-            android:textColor="#1A1A1A"
-            app:buttonTint="#D0D5DD"
+            android:textColor="@color/darkGray"
+            app:buttonTint="@color/lightGrey"
             android:layout_marginBottom="24dp"/>
 
     </LinearLayout>
@@ -154,8 +153,8 @@
         android:id="@+id/btnNext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Далее"
-        android:backgroundTint="#2A1246"
+        android:text="@string/next"
+        android:backgroundTint="@color/violet"
         app:cornerRadius="8dp"
         android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
