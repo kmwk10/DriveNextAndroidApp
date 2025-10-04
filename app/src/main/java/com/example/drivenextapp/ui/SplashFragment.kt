@@ -1,4 +1,4 @@
-package com.example.drivenextapp.ui.splash
+package com.example.drivenextapp.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,7 +21,7 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.postDelayed({
-            findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
+            findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment1)
         }, 3000)
     }
 }

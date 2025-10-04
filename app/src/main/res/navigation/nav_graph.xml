@@ -6,15 +6,33 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.drivenextapp.ui.splash.SplashFragment"
+        android:name="com.example.drivenextapp.ui.SplashFragment"
         android:label="Splash">
         <action
-            android:id="@+id/action_splashFragment_to_onboardingFragment"
-            app:destination="@id/onboardingFragment" />
+            android:id="@+id/action_splashFragment_to_onboardingFragment1"
+            app:destination="@id/onboardingFragment1" />
     </fragment>
 
     <fragment
-        android:id="@+id/onboardingFragment"
-        android:name="com.example.drivenextapp.ui.onboarding.OnboardingFragment"
-        android:label="Onboarding" />
+        android:id="@+id/onboardingFragment1"
+        android:name="com.example.drivenextapp.ui.OnboardingFragment1"
+        android:label="Onboarding 1">
+        <action
+            android:id="@+id/action_onboardingFragment1_to_onboardingFragment2"
+            app:destination="@id/onboardingFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onboardingFragment2"
+        android:name="com.example.drivenextapp.ui.OnboardingFragment2"
+        android:label="Onboarding 2">
+        <action
+            android:id="@+id/action_onboardingFragment2_to_onboardingFragment3"
+            app:destination="@id/onboardingFragment3" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onboardingFragment3"
+        android:name="com.example.drivenextapp.ui.OnboardingFragment3"
+        android:label="Onboarding 3" />
 </navigation>
