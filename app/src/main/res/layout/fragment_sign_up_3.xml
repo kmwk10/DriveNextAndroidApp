@@ -196,6 +196,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/violet"
+        android:textColor="@color/white"
         android:text="@string/next"
         app:cornerRadius="8dp"
         android:layout_marginBottom="14dp"
