@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.drivenextapp.ui.SplashFragment"
+        android:name="com.example.drivenextapp.ui.common.SplashFragment"
         android:label="Splash">
         <action
             android:id="@+id/action_splashFragment_to_onboardingFragment1"
@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/onboardingFragment1"
-        android:name="com.example.drivenextapp.ui.OnboardingFragment1"
+        android:name="com.example.drivenextapp.ui.onboarding.OnboardingFragment1"
         android:label="Onboarding 1">
         <action
             android:id="@+id/action_onboardingFragment1_to_onboardingFragment2"
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/onboardingFragment2"
-        android:name="com.example.drivenextapp.ui.OnboardingFragment2"
+        android:name="com.example.drivenextapp.ui.onboarding.OnboardingFragment2"
         android:label="Onboarding 2">
         <action
             android:id="@+id/action_onboardingFragment2_to_onboardingFragment3"
@@ -39,7 +39,7 @@
 
     <fragment
         android:id="@+id/onboardingFragment3"
-        android:name="com.example.drivenextapp.ui.OnboardingFragment3"
+        android:name="com.example.drivenextapp.ui.onboarding.OnboardingFragment3"
         android:label="Onboarding 3">
         <action
             android:id="@+id/action_onboardingFragment3_to_gettingStartedFragment"
@@ -48,7 +48,7 @@
 
     <fragment
         android:id="@+id/gettingStartedFragment"
-        android:name="com.example.drivenextapp.ui.GettingStartedFragment"
+        android:name="com.example.drivenextapp.ui.authorization.GettingStartedFragment"
         android:label="Getting started">
         <action
             android:id="@+id/action_gettingStartedFragment_to_loginFragment"
@@ -60,7 +60,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.drivenextapp.ui.LoginFragment"
+        android:name="com.example.drivenextapp.ui.authorization.LoginFragment"
         android:label="Log in">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment1"
@@ -69,7 +69,7 @@
 
     <fragment
         android:id="@+id/signUpFragment1"
-        android:name="com.example.drivenextapp.ui.SignUpFragment1"
+        android:name="com.example.drivenextapp.ui.authorization.SignUpFragment1"
         android:label="Sign up 1">
         <action
             android:id="@+id/action_signUpFragment1_to_signUpFragment2"
@@ -81,7 +81,7 @@
 
     <fragment
         android:id="@+id/signUpFragment2"
-        android:name="com.example.drivenextapp.ui.SignUpFragment2"
+        android:name="com.example.drivenextapp.ui.authorization.SignUpFragment2"
         android:label="Sign up 2">
         <action
             android:id="@+id/action_signUpFragment2_to_signUpFragment3"
@@ -93,7 +93,7 @@
 
     <fragment
         android:id="@+id/signUpFragment3"
-        android:name="com.example.drivenextapp.ui.SignUpFragment3"
+        android:name="com.example.drivenextapp.ui.authorization.SignUpFragment3"
         android:label="Sign up 3">
         <action
             android:id="@+id/action_signUpFragment3_to_signUpSuccessFragment"
@@ -105,7 +105,7 @@
 
     <fragment
         android:id="@+id/signUpSuccessFragment"
-        android:name="com.example.drivenextapp.ui.SignUpSuccessFragment"
+        android:name="com.example.drivenextapp.ui.authorization.SignUpSuccessFragment"
         android:label="Sign up success">
         <action
             android:id="@+id/action_signUpSuccessFragment_to_signUpFragment3"
@@ -114,7 +114,7 @@
 
     <fragment
         android:id="@+id/homepageFragment"
-        android:name="com.example.drivenextapp.ui.HomepageFragment"
+        android:name="com.example.drivenextapp.ui.search.HomepageFragment"
         android:label="Homepage">
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.drivenextapp.ui
+package com.example.drivenextapp.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.drivenextapp.R
 
-class SignUpSuccessFragment : Fragment() {
+class HomepageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_sign_up_success, container, false)
+        return inflater.inflate(R.layout.fragment_homepage, container, false)
     }
 }

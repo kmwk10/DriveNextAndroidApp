@@ -1,21 +1,21 @@
-package com.example.drivenextapp.ui
+package com.example.drivenextapp.ui.authorization
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.drivenextapp.R
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.textview.MaterialTextView
 
-class OnboardingFragment3 : Fragment() {
+class SignUpFragment2 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_onboarding_3, container, false)
+        return inflater.inflate(R.layout.fragment_sign_up_2, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -23,12 +23,12 @@ class OnboardingFragment3 : Fragment() {
 
         view.findViewById<MaterialButton>(R.id.btnNext)
             .setOnClickListener {
-                findNavController().navigate(R.id.action_onboardingFragment3_to_gettingStartedFragment)
+                findNavController().navigate(R.id.action_signUpFragment2_to_signUpFragment3)
             }
 
-        view.findViewById<MaterialTextView>(R.id.btnSkip)
+        view.findViewById<ImageView>(R.id.ivBack)
             .setOnClickListener {
-                findNavController().navigate(R.id.action_onboardingFragment3_to_gettingStartedFragment)
+                findNavController().navigate(R.id.action_signUpFragment2_to_signUpFragment1)
             }
     }
 }

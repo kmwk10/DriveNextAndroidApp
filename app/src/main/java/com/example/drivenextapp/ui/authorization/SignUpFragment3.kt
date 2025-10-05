@@ -1,4 +1,4 @@
-package com.example.drivenextapp.ui
+package com.example.drivenextapp.ui.authorization
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.drivenextapp.R
 import com.google.android.material.button.MaterialButton
 
-class SignUpFragment2 : Fragment() {
+class SignUpFragment3 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_sign_up_2, container, false)
+        return inflater.inflate(R.layout.fragment_sign_up_3, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -23,12 +23,12 @@ class SignUpFragment2 : Fragment() {
 
         view.findViewById<MaterialButton>(R.id.btnNext)
             .setOnClickListener {
-                findNavController().navigate(R.id.action_signUpFragment2_to_signUpFragment3)
+                findNavController().navigate(R.id.action_signUpFragment3_to_signUpSuccessFragment)
             }
 
         view.findViewById<ImageView>(R.id.ivBack)
             .setOnClickListener {
-                findNavController().navigate(R.id.action_signUpFragment2_to_signUpFragment1)
+                findNavController().navigate(R.id.action_signUpFragment3_to_signUpFragment2)
             }
     }
 }
