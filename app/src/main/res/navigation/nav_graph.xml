@@ -125,6 +125,9 @@
         android:name="com.example.drivenextapp.ui.authorization.SignUpSuccessFragment"
         android:label="Sign up success">
         <action
+            android:id="@+id/action_signUpSuccessFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
+        <action
             android:id="@+id/action_signUpSuccessFragment_to_signUpFragment3"
             app:destination="@id/signUpFragment3" />
     </fragment>
