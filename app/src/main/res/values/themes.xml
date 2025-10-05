@@ -1,12 +1,16 @@
 <resources>
-    <style name="Base.Theme.DriveNextApp" parent="Theme.Material3.Light.NoActionBar">
-        <item name="android:colorBackground">@color/white</item>
+    <style name="Theme.DriveNextApp" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowBackground">@color/white</item>
         <item name="android:textColor">@color/black</item>
+
         <item name="colorPrimary">@color/violet</item>
         <item name="colorOnPrimary">@color/white</item>
+
         <item name="colorSecondary">@color/white</item>
         <item name="colorOnSecondary">@color/violet</item>
-    </style>
 
-    <style name="Theme.DriveNextApp" parent="Base.Theme.DriveNextApp" />
+        <item name="materialButtonStyle">@style/Widget.DriveNextApp.Button</item>
+
+        <item name="textInputStyle">@style/Widget.DriveNextApp.TextInputLayout</item>
+    </style>
 </resources>

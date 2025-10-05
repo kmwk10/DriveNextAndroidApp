@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.DriveNextApp.Button" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/violet</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.DriveNextApp.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="hintEnabled">false</item>
+    </style>
+</resources>
