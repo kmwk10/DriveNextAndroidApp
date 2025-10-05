@@ -4,12 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.drivenextapp.R
+import com.example.drivenextapp.data.AuthRepository
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class LoginFragment : Fragment() {
+
+    private lateinit var emailEdit: TextInputEditText
+    private lateinit var passwordEdit: TextInputEditText
+    private lateinit var emailLayout: TextInputLayout
+    private lateinit var passwordLayout: TextInputLayout
+    private lateinit var loginButton: MaterialButton
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,9 +30,48 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<TextView>(R.id.tvRegister)
-            .setOnClickListener {
-                findNavController().navigate(R.id.action_loginFragment_to_signUpFragment1)
-            }
+        emailEdit = view.findViewById(R.id.etEmail)
+        passwordEdit = view.findViewById(R.id.etPassword)
+        emailLayout = view.findViewById(R.id.emailLayout)
+        passwordLayout = view.findViewById(R.id.passwordLayout)
+        loginButton = view.findViewById(R.id.btnLogin)
+
+        loginButton.setOnClickListener {
+            validateAndLogin()
+        }
+
+        view.findViewById<View>(R.id.tvRegister).setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment1)
+        }
+    }
+
+    private fun validateAndLogin() {
+        val email = emailEdit.text.toString()
+        val password = passwordEdit.text.toString()
+
+        var valid = true
+
+        if (email.isEmpty()) {
+            emailLayout.error = "Это поле является обязательным"
+            valid = false
+        } else {
+            emailLayout.error = null
+        }
+
+        if (password.isEmpty()) {
+            passwordLayout.error = "Это поле является обязательным"
+            valid = false
+        } else {
+            passwordLayout.error = null
+        }
+
+        if (!valid) return
+
+        // Тестовая проверка
+        if (AuthRepository.checkCredentials(email, password)) {
+            findNavController().navigate(R.id.action_loginFragment_to_homepageFragment)
+        } else {
+            passwordLayout.error = "Неверные данные"
+        }
     }
 }

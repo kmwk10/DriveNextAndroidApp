@@ -7,5 +7,6 @@
 
     <style name="Widget.DriveNextApp.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="hintEnabled">false</item>
+        <item name="helperText">" "</item>
     </style>
 </resources>

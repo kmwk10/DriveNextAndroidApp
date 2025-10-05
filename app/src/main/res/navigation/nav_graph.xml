@@ -80,6 +80,9 @@
         android:name="com.example.drivenextapp.ui.authorization.LoginFragment"
         android:label="Log in">
         <action
+            android:id="@+id/action_loginFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
+        <action
             android:id="@+id/action_loginFragment_to_signUpFragment1"
             app:destination="@id/signUpFragment1" />
     </fragment>

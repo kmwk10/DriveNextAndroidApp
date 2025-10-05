@@ -57,7 +57,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@color/lightGrey"
             android:textColorHint="@color/blueGray"
@@ -86,7 +85,6 @@
             android:id="@+id/passwordLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@color/lightGrey"
             android:textColorHint="@color/blueGray"
@@ -117,7 +115,7 @@
             android:id="@+id/confirmPasswordLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@color/lightGrey"
             android:textColorHint="@color/blueGray"
