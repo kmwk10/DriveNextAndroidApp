@@ -1,6 +1,8 @@
 package com.example.drivenextapp.ui.common
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +15,8 @@ import com.example.drivenextapp.util.PrefsManager
 class SplashFragment : Fragment() {
 
     private lateinit var connectivityLiveData: ConnectivityLiveData
-    private var hasNavigated = false  // Чтобы не выполнить переход дважды
+    private var hasNavigated = false
+    private val splashDelay = 2000L
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,9 +31,11 @@ class SplashFragment : Fragment() {
         connectivityLiveData = ConnectivityLiveData(requireContext())
         connectivityLiveData.observe(viewLifecycleOwner) { connected ->
             if (connected && !hasNavigated) {
-                navigateNext()
+                Handler(Looper.getMainLooper()).postDelayed({
+                    navigateNext()
+                }, splashDelay)
             }
-            // Если сети нет — ничего не делаем, MainActivity покажет NoConnectionFragment
+            // Если сети нет - ничего не делаем, MainActivity покажет NoConnectionFragment
         }
     }
 
@@ -41,15 +46,9 @@ class SplashFragment : Fragment() {
         hasNavigated = true
 
         when {
-            prefs.isFirstLaunch() -> {
-                navController.navigate(R.id.action_splashFragment_to_onboardingFragment1)
-            }
-            !prefs.isAccessTokenValid() -> {
-                navController.navigate(R.id.action_splashFragment_to_gettingStartedFragment)
-            }
-            else -> {
-                navController.navigate(R.id.action_splashFragment_to_homepageFragment)
-            }
+            prefs.isFirstLaunch() -> navController.navigate(R.id.action_splashFragment_to_onboardingFragment1)
+            !prefs.isAccessTokenValid() -> navController.navigate(R.id.action_splashFragment_to_gettingStartedFragment)
+            else -> navController.navigate(R.id.action_splashFragment_to_homepageFragment)
         }
     }
 }
