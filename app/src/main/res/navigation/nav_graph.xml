@@ -11,6 +11,23 @@
         <action
             android:id="@+id/action_splashFragment_to_onboardingFragment1"
             app:destination="@id/onboardingFragment1" />
+        <action
+            android:id="@+id/action_splashFragment_to_gettingStartedFragment"
+            app:destination="@id/gettingStartedFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/noConnectionFragment"
+        android:name="com.example.drivenextapp.ui.common.NoConnectionFragment"
+        android:label="No connection">
+        <action
+            android:id="@+id/action_global_noConnectionFragment"
+            app:destination="@id/noConnectionFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
