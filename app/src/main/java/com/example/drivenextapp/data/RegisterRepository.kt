@@ -33,7 +33,6 @@ object RegisterRepository {
     fun isDriverLicenseIssueDateValid(): Boolean = currentData.driverLicenseIssueDate != null
     fun isDriverLicensePhotoValid(): Boolean = currentData.driverLicensePhoto != null
     fun isPassportPhotoValid(): Boolean = currentData.passportPhoto != null
-    fun isProfilePhotoValid(): Boolean = currentData.profilePhoto != null
 
     // Валидация
     fun validateStep1(confirmPassword: String, acceptedTerms: Boolean): Map<String, String> {
@@ -68,7 +67,7 @@ object RegisterRepository {
         if (!isSurnameValid()) errors["surname"] = "Это поле является обязательным"
         if (!isNameValid()) errors["name"] = "Это поле является обязательным"
         if (!isPatronymicValid()) errors["patronymic"] = "Это поле является обязательным"
-        if (!isBirthDateValid()) errors["birthDate"] = "Это поле является обязательным"
+        if (!isBirthDateValid()) errors["birthDate"] = "Введите корректную дату рождения"
         if (!isGenderValid()) errors["gender"] = "Выберите пол"
 
         return errors
@@ -83,7 +82,7 @@ object RegisterRepository {
             errors["licenseNumber"] = "Введите корректный номер водительского удостоверения"
         }
 
-        if (!isDriverLicenseIssueDateValid()) errors["licenseDate"] = "Выберите дату выдачи"
+        if (!isDriverLicenseIssueDateValid()) errors["licenseDate"] = "Введите корректную дату выдачи"
         if (!isDriverLicensePhotoValid()) errors["licensePhoto"] = "Загрузите фото водительского удостоверения"
         if (!isPassportPhotoValid()) errors["passportPhoto"] = "Загрузите фото паспорта"
 

@@ -66,6 +66,7 @@ class LoginFragment : Fragment() {
 
         if (password.isBlank()) {
             passwordLayout.showError(getString(R.string.error_required))
+            passwordLayout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
             valid = false
         } else passwordLayout.showError(null)
 
