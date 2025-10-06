@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.drivenextapp.R
@@ -47,6 +48,7 @@ class SignUpFragment1 : Fragment() {
             val password = etPassword.text?.toString() ?: ""
             val confirmPassword = etConfirmPassword.text?.toString() ?: ""
             val isChecked = chkAgree.isChecked
+            val chkError = view.findViewById<TextView>(R.id.chkError)
 
             // Сброс ошибок
             emailLayout.error = null
@@ -67,9 +69,11 @@ class SignUpFragment1 : Fragment() {
                 errors["password"]?.let { passwordLayout.error = it }
                 errors["repeat"]?.let { confirmPasswordLayout.error = it }
                 if (errors["terms"] != null) {
-                    chkAgree.error = errors["terms"]
+                    chkError.text = errors["terms"]
+                    chkError.visibility = View.VISIBLE
                 } else {
-                    chkAgree.error = null
+                    chkError.text = ""
+                    chkError.visibility = View.GONE
                 }
             }
         }

@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.drivenextapp.R
 import com.example.drivenextapp.data.RegisterRepository
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
@@ -32,6 +32,8 @@ class SignUpFragment3 : Fragment() {
     private lateinit var etLicenseDate: TextInputEditText
     private lateinit var licenseLayout: TextInputLayout
     private lateinit var licenseDateLayout: TextInputLayout
+
+    private lateinit var photoError: TextView
 
     private var currentPicker: Picker = Picker.PROFILE
 
@@ -76,6 +78,8 @@ class SignUpFragment3 : Fragment() {
         licenseLayout = view.findViewById(R.id.licenseLayout)
         licenseDateLayout = view.findViewById(R.id.licenseDateLayout)
 
+        photoError = view.findViewById(R.id.photoError)
+
         val btnNext = view.findViewById<MaterialButton>(R.id.btnNext)
         val ivBack = view.findViewById<ImageView>(R.id.ivBack)
 
@@ -119,19 +123,32 @@ class SignUpFragment3 : Fragment() {
             val errors = RegisterRepository.validateStep3()
             var hasErrors = false
 
+            // Сбрасываем ошибки
+            licenseLayout.error = null
+            licenseDateLayout.error = null
+            photoError.visibility = View.GONE
+            photoError.text = ""
+
             // Текстовые поля
-            if (errors.containsKey("licenseNumber")) {
-                licenseLayout.error = errors["licenseNumber"]
+            errors["licenseNumber"]?.let {
+                licenseLayout.error = it
                 hasErrors = true
-            } else licenseLayout.error = null
+            }
 
-            if (errors.containsKey("licenseDate")) {
-                licenseDateLayout.error = errors["licenseDate"]
+            errors["licenseDate"]?.let {
+                licenseDateLayout.error = it
                 hasErrors = true
-            } else licenseDateLayout.error = null
+            }
 
-            if (errors.containsKey("licensePhoto")) hasErrors = true
-            if (errors.containsKey("passportPhoto")) hasErrors = true
+            // Проверка фото
+            val missingLicensePhoto = errors.containsKey("licensePhoto")
+            val missingPassportPhoto = errors.containsKey("passportPhoto")
+
+            if (missingLicensePhoto || missingPassportPhoto) {
+                photoError.text = "Пожалуйста, загрузите все необходимые фото."
+                photoError.visibility = View.VISIBLE
+                hasErrors = true
+            }
 
             if (!hasErrors) {
                 findNavController().navigate(R.id.action_signUpFragment3_to_signUpSuccessFragment)
@@ -142,6 +159,7 @@ class SignUpFragment3 : Fragment() {
             findNavController().navigate(R.id.action_signUpFragment3_to_signUpFragment2)
         }
     }
+
     private fun pickImage(picker: Picker) {
         currentPicker = picker
         pickImageLauncher.launch("image/*")

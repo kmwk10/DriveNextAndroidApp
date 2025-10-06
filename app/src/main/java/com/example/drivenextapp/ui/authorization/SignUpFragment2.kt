@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.drivenextapp.R
@@ -44,8 +45,7 @@ class SignUpFragment2 : Fragment() {
         val etBirthDate = view.findViewById<TextInputEditText>(R.id.etBirthDate)
         val birthDateLayout = view.findViewById<TextInputLayout>(R.id.birthDateLayout)
         val rgGender = view.findViewById<RadioGroup>(R.id.rgGender)
-        val rbMale = view.findViewById<RadioButton>(R.id.rbMale)
-        val rbFemale = view.findViewById<RadioButton>(R.id.rbFemale)
+        val genderError = view.findViewById<TextView>(R.id.genderError)
         val btnNext = view.findViewById<MaterialButton>(R.id.btnNext)
         val ivBack = view.findViewById<ImageView>(R.id.ivBack)
 
@@ -81,10 +81,10 @@ class SignUpFragment2 : Fragment() {
             ).show()
         }
 
-        // Сбрасываем ошибки на радио кнопках при выборе
+        // Сбрасываем ошибку пола при выборе
         rgGender.setOnCheckedChangeListener { _, _ ->
-            rbMale.error = null
-            rbFemale.error = null
+            genderError.visibility = View.GONE
+            genderError.text = ""
         }
 
         btnNext.setOnClickListener {
@@ -108,21 +108,25 @@ class SignUpFragment2 : Fragment() {
             firstNameLayout.error = null
             middleNameLayout.error = null
             birthDateLayout.error = null
-            rbMale.error = null
-            rbFemale.error = null
+            genderError.visibility = View.GONE
+            genderError.text = ""
 
             // Отображаем ошибки
             errors["surname"]?.let { lastNameLayout.error = it }
             errors["name"]?.let { firstNameLayout.error = it }
             errors["patronymic"]?.let { middleNameLayout.error = it }
             errors["birthDate"]?.let { birthDateLayout.showError(it) }
-            errors["gender"]?.let { rbFemale.error = it } // отображаем ошибку на одной из радиокнопок
+            errors["gender"]?.let {
+                genderError.text = it
+                genderError.visibility = View.VISIBLE
+            }
 
             if (errors.isEmpty()) {
                 findNavController().navigate(R.id.action_signUpFragment2_to_signUpFragment3)
             }
         }
 
+        // Назад
         ivBack.setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment2_to_signUpFragment1)
         }

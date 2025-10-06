@@ -165,9 +165,7 @@
             android:id="@+id/rgGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-
-            android:layout_marginBottom="24dp">
+            android:orientation="horizontal">
             <RadioButton
                 android:id="@+id/rbMale"
                 android:layout_width="wrap_content"
@@ -182,6 +180,15 @@
                 android:text="@string/female"
                 android:layout_marginStart="24dp"/>
         </RadioGroup>
+
+        <TextView
+            android:id="@+id/genderError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            android:visibility="gone"
+            android:paddingStart="12dp"/>
 
     </LinearLayout>
 
