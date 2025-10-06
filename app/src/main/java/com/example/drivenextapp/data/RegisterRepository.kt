@@ -23,11 +23,6 @@ object RegisterRepository {
     fun saveProfilePhoto(uri: Uri) { currentData.profilePhoto = uri }
 
     // Валидация полей
-    fun isEmailValid(): Boolean = ValidationUtils.isEmailValid(currentData.email)
-    fun isPasswordValid(): Boolean = ValidationUtils.isPasswordStrong(currentData.password)
-    fun isPasswordMatch(confirmPassword: String): Boolean =
-        ValidationUtils.arePasswordsMatching(currentData.password, confirmPassword)
-
     fun isSurnameValid(): Boolean = currentData.surname.isNotBlank()
     fun isNameValid(): Boolean = currentData.name.isNotBlank()
     fun isPatronymicValid(): Boolean = currentData.patronymic.isNotBlank()
@@ -82,7 +77,12 @@ object RegisterRepository {
     fun validateStep3(): Map<String, String> {
         val errors = mutableMapOf<String, String>()
 
-        if (!isDriverLicenseNumberValid()) errors["licenseNumber"] = "Это поле является обязательным"
+        if (currentData.driverLicenseNumber.isBlank()) {
+            errors["licenseNumber"] = "Это поле является обязательным"
+        } else if (!isDriverLicenseNumberValid()) {
+            errors["licenseNumber"] = "Введите корректный номер водительского удостоверения"
+        }
+
         if (!isDriverLicenseIssueDateValid()) errors["licenseDate"] = "Выберите дату выдачи"
         if (!isDriverLicensePhotoValid()) errors["licensePhoto"] = "Загрузите фото водительского удостоверения"
         if (!isPassportPhotoValid()) errors["passportPhoto"] = "Загрузите фото паспорта"

@@ -130,16 +130,8 @@ class SignUpFragment3 : Fragment() {
                 hasErrors = true
             } else licenseDateLayout.error = null
 
-            // Фото через Snackbar
-            if (errors.containsKey("licensePhoto")) {
-                Snackbar.make(view, errors["licensePhoto"]!!, Snackbar.LENGTH_SHORT).show()
-                hasErrors = true
-            }
-
-            if (errors.containsKey("passportPhoto")) {
-                Snackbar.make(view, errors["passportPhoto"]!!, Snackbar.LENGTH_SHORT).show()
-                hasErrors = true
-            }
+            if (errors.containsKey("licensePhoto")) hasErrors = true
+            if (errors.containsKey("passportPhoto")) hasErrors = true
 
             if (!hasErrors) {
                 findNavController().navigate(R.id.action_signUpFragment3_to_signUpSuccessFragment)
