@@ -54,4 +54,7 @@
     <string name="congratulations">Поздравляем</string>
     <string name="congratulations_text">Вы успешно зарегистрировались.\nОбработка ваших персональных данных займет около двух часов. Спасибо за ожидание.</string>
     <string name="go">Поехали</string>
+    <string name="error_required">Это поле является обязательным</string>
+    <string name="error_invalid_email">Введите корректный email</string>
+    <string name="error_incorrect_credentials">Неверные данные</string>
 </resources>

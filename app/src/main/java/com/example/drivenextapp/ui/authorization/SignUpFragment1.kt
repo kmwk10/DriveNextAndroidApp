@@ -11,13 +11,9 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.checkbox.MaterialCheckBox
+import com.example.drivenextapp.data.RegisterRepository
 
 class SignUpFragment1 : Fragment() {
-
-    private var emailText: String? = null
-    private var passwordText: String? = null
-    private var confirmPasswordText: String? = null
-    private var isAgreeChecked: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,18 +35,17 @@ class SignUpFragment1 : Fragment() {
         val chkAgree = view.findViewById<MaterialCheckBox>(R.id.chkAgree)
         val btnNext = view.findViewById<MaterialButton>(R.id.btnNext)
 
-        // Восстанавливаем данные, если они есть
-        etEmail.setText(emailText)
-        etPassword.setText(passwordText)
-        etConfirmPassword.setText(confirmPasswordText)
-        chkAgree.isChecked = isAgreeChecked
+        // Восстанавливаем данные из RegisterRepository (чтобы не терялись при навигации)
+        etEmail.setText(RegisterRepository.currentData.email)
+        etPassword.setText(RegisterRepository.currentData.password)
+        etConfirmPassword.setText("")
+        chkAgree.isChecked = false
 
         btnNext.setOnClickListener {
-            var hasError = false
-
-            val email = etEmail.text.toString().trim()
-            val password = etPassword.text.toString().trim()
-            val confirmPassword = etConfirmPassword.text.toString().trim()
+            // Получаем значения
+            val email = etEmail.text?.toString()?.trim() ?: ""
+            val password = etPassword.text?.toString() ?: ""
+            val confirmPassword = etConfirmPassword.text?.toString() ?: ""
             val isChecked = chkAgree.isChecked
 
             // Сброс ошибок
@@ -58,56 +53,29 @@ class SignUpFragment1 : Fragment() {
             passwordLayout.error = null
             confirmPasswordLayout.error = null
 
-            // Проверка email
-            if (email.isEmpty()) {
-                emailLayout.error = "Это поле является обязательным"
-                hasError = true
-            } else if (!isEmailValid(email)) {
-                emailLayout.error = "Введите корректный email"
-                hasError = true
-            }
+            // Сохраняем во временное хранилище
+            RegisterRepository.saveEmail(email)
+            RegisterRepository.savePassword(password)
 
-            // Проверка пароля
-            if (password.isEmpty()) {
-                passwordLayout.error = "Это поле является обязательным"
-                hasError = true
-            }
+            // Валидация шага 1
+            val errors = RegisterRepository.validateStep1(confirmPassword = confirmPassword, acceptedTerms = isChecked)
 
-            // Проверка повторного пароля
-            if (confirmPassword.isEmpty()) {
-                confirmPasswordLayout.error = "Это поле является обязательным"
-                hasError = true
-            } else if (password != confirmPassword) {
-                confirmPasswordLayout.error = "Пароли не совпадают"
-                hasError = true
-            }
-
-            // Проверка соглашения
-            if (!isChecked) {
-                chkAgree.error = "Необходимо согласие"
-                hasError = true
-            } else {
-                chkAgree.error = null
-            }
-
-            if (!hasError) {
-                // Сохраняем данные для следующего фрагмента
-                emailText = email
-                passwordText = password
-                confirmPasswordText = confirmPassword
-                isAgreeChecked = isChecked
-
+            if (errors.isEmpty()) {
                 findNavController().navigate(R.id.action_signUpFragment1_to_signUpFragment2)
+            } else {
+                errors["email"]?.let { emailLayout.error = it }
+                errors["password"]?.let { passwordLayout.error = it }
+                errors["repeat"]?.let { confirmPasswordLayout.error = it }
+                if (errors["terms"] != null) {
+                    chkAgree.error = errors["terms"]
+                } else {
+                    chkAgree.error = null
+                }
             }
         }
 
         view.findViewById<android.widget.ImageView>(R.id.ivBack).setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment1_to_loginFragment)
         }
-    }
-
-    // Проверка email
-    private fun isEmailValid(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }

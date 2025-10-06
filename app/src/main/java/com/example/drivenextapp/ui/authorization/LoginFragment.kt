@@ -10,6 +10,9 @@ import androidx.navigation.navOptions
 import com.example.drivenextapp.R
 import com.example.drivenextapp.data.AuthRepository
 import com.example.drivenextapp.util.PrefsManager
+import com.example.drivenextapp.util.ValidationUtils
+import com.example.drivenextapp.util.getTextOrEmpty
+import com.example.drivenextapp.util.showError
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -48,24 +51,23 @@ class LoginFragment : Fragment() {
     }
 
     private fun validateAndLogin() {
-        val email = emailEdit.text?.toString().orEmpty()
-        val password = passwordEdit.text?.toString().orEmpty()
+        val email = emailEdit.getTextOrEmpty().trim()
+        val password = passwordEdit.getTextOrEmpty()
 
         var valid = true
 
-        if (email.isEmpty()) {
-            emailLayout.error = "Это поле является обязательным"
+        if (email.isBlank()) {
+            emailLayout.showError(getString(R.string.error_required))
             valid = false
-        } else {
-            emailLayout.error = null
-        }
+        } else if (!ValidationUtils.isEmailValid(email)) {
+            emailLayout.showError(getString(R.string.error_invalid_email))
+            valid = false
+        } else emailLayout.showError(null)
 
-        if (password.isEmpty()) {
-            passwordLayout.error = "Это поле является обязательным"
+        if (password.isBlank()) {
+            passwordLayout.showError(getString(R.string.error_required))
             valid = false
-        } else {
-            passwordLayout.error = null
-        }
+        } else passwordLayout.showError(null)
 
         if (!valid) return
 
