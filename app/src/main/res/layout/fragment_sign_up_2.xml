@@ -53,6 +53,7 @@
             android:textSize="14sp"
             android:textColor="@color/gray"/>
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lastNameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
@@ -78,6 +79,7 @@
             android:textSize="14sp"
             android:textColor="@color/gray"/>
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/firstNameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
@@ -103,6 +105,7 @@
             android:textSize="14sp"
             android:textColor="@color/gray"/>
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/middleNameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
