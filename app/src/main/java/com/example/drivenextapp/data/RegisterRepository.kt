@@ -22,7 +22,7 @@ object RegisterRepository {
     fun savePassportPhoto(uri: Uri) { currentData.passportPhoto = uri }
     fun saveProfilePhoto(uri: Uri) { currentData.profilePhoto = uri }
 
-    // Обёртки, использующие ValidationUtils
+    // Валидация полей
     fun isEmailValid(): Boolean = ValidationUtils.isEmailValid(currentData.email)
     fun isPasswordValid(): Boolean = ValidationUtils.isPasswordStrong(currentData.password)
     fun isPasswordMatch(confirmPassword: String): Boolean =
@@ -31,16 +31,16 @@ object RegisterRepository {
     fun isSurnameValid(): Boolean = currentData.surname.isNotBlank()
     fun isNameValid(): Boolean = currentData.name.isNotBlank()
     fun isPatronymicValid(): Boolean = currentData.patronymic.isNotBlank()
-
     fun isBirthDateValid(): Boolean = currentData.birthDate != null
     fun isGenderValid(): Boolean = currentData.gender != null
+
     fun isDriverLicenseNumberValid(): Boolean = currentData.driverLicenseNumber.isNotBlank()
     fun isDriverLicenseIssueDateValid(): Boolean = currentData.driverLicenseIssueDate != null
     fun isDriverLicensePhotoValid(): Boolean = currentData.driverLicensePhoto != null
     fun isPassportPhotoValid(): Boolean = currentData.passportPhoto != null
     fun isProfilePhotoValid(): Boolean = currentData.profilePhoto != null
 
-    // Валидация шага 1 регистрации (email, password, повтор, чекбокс).
+    // Валидация
     fun validateStep1(confirmPassword: String, acceptedTerms: Boolean): Map<String, String> {
         val errors = mutableMapOf<String, String>()
 
@@ -63,6 +63,30 @@ object RegisterRepository {
         if (!acceptedTerms) {
             errors["terms"] = "Необходимо согласиться с условиями обслуживания и политикой конфиденциальности."
         }
+
+        return errors
+    }
+
+    fun validateStep2(): Map<String, String> {
+        val errors = mutableMapOf<String, String>()
+
+        if (!isSurnameValid()) errors["surname"] = "Это поле является обязательным"
+        if (!isNameValid()) errors["name"] = "Это поле является обязательным"
+        if (!isPatronymicValid()) errors["patronymic"] = "Это поле является обязательным"
+        if (!isBirthDateValid()) errors["birthDate"] = "Это поле является обязательным"
+        if (!isGenderValid()) errors["gender"] = "Выберите пол"
+
+        return errors
+    }
+
+    fun validateStep3(): Map<String, String> {
+        val errors = mutableMapOf<String, String>()
+
+        if (!isDriverLicenseNumberValid()) errors["licenseNumber"] = "Это поле является обязательным"
+        if (!isDriverLicenseIssueDateValid()) errors["licenseDate"] = "Выберите дату выдачи"
+        if (!isProfilePhotoValid()) errors["profilePhoto"] = "Загрузите фото профиля"
+        if (!isDriverLicensePhotoValid()) errors["licensePhoto"] = "Загрузите фото водительского удостоверения"
+        if (!isPassportPhotoValid()) errors["passportPhoto"] = "Загрузите фото паспорта"
 
         return errors
     }

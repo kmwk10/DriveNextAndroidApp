@@ -142,7 +142,6 @@
                 android:layout_height="48dp"
                 android:src="@drawable/ic_upload"
                 android:contentDescription="@string/upload_photo"
-
                 android:clickable="true"
                 android:focusable="true"/>
 

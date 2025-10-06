@@ -34,6 +34,7 @@ class SignUpFragment2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val lastNameLayout = view.findViewById<TextInputLayout>(R.id.lastNameLayout)
         val firstNameLayout = view.findViewById<TextInputLayout>(R.id.firstNameLayout)
         val middleNameLayout = view.findViewById<TextInputLayout>(R.id.middleNameLayout)
@@ -87,57 +88,41 @@ class SignUpFragment2 : Fragment() {
         }
 
         btnNext.setOnClickListener {
-            val lastName = etLastName.getTextOrEmpty().trim()
-            val firstName = etFirstName.getTextOrEmpty().trim()
-            val middleName = etMiddleName.getTextOrEmpty().trim()
+            // Сохраняем данные в репозиторий
+            RegisterRepository.saveSurname(etLastName.getTextOrEmpty().trim())
+            RegisterRepository.saveName(etFirstName.getTextOrEmpty().trim())
+            RegisterRepository.savePatronymic(etMiddleName.getTextOrEmpty().trim())
+            selectedDate?.let { RegisterRepository.saveBirthDate(it) }
             val gender = when (rgGender.checkedRadioButtonId) {
                 R.id.rbMale -> Gender.MALE
                 R.id.rbFemale -> Gender.FEMALE
                 else -> null
             }
+            gender?.let { RegisterRepository.saveGender(it) }
+
+            // Валидация через репозиторий
+            val errors = RegisterRepository.validateStep2()
 
             // Сбрасываем ошибки
             lastNameLayout.error = null
             firstNameLayout.error = null
             middleNameLayout.error = null
             birthDateLayout.error = null
+            rbMale.error = null
+            rbFemale.error = null
 
-            // Сохраняем данные
-            RegisterRepository.saveSurname(lastName)
-            RegisterRepository.saveName(firstName)
-            RegisterRepository.savePatronymic(middleName)
-            selectedDate?.let { RegisterRepository.saveBirthDate(it) }
-            gender?.let { RegisterRepository.saveGender(it) }
+            // Отображаем ошибки
+            errors["surname"]?.let { lastNameLayout.error = it }
+            errors["name"]?.let { firstNameLayout.error = it }
+            errors["patronymic"]?.let { middleNameLayout.error = it }
+            errors["birthDate"]?.let { birthDateLayout.showError(it) }
+            errors["gender"]?.let { rbFemale.error = it } // отображаем ошибку на одной из радиокнопок
 
-            // Проверяем поля
-            var valid = true
-            if (!RegisterRepository.isSurnameValid()) {
-                lastNameLayout.error = getString(R.string.error_required)
-                valid = false
-            }
-            if (!RegisterRepository.isNameValid()) {
-                firstNameLayout.error = getString(R.string.error_required)
-                valid = false
-            }
-            if (!RegisterRepository.isPatronymicValid()) {
-                middleNameLayout.error = getString(R.string.error_required)
-                valid = false
-            }
-            if (!RegisterRepository.isBirthDateValid()) {
-                birthDateLayout.showError(getString(R.string.error_required))
-                valid = false
-            }
-            if (!RegisterRepository.isGenderValid()) {
-                rbFemale.error = getString(R.string.error_required)
-                valid = false
-            }
-
-            if (valid) {
+            if (errors.isEmpty()) {
                 findNavController().navigate(R.id.action_signUpFragment2_to_signUpFragment3)
             }
         }
 
-        // Назад
         ivBack.setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment2_to_signUpFragment1)
         }
