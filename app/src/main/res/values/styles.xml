@@ -3,6 +3,7 @@
     <style name="Widget.DriveNextApp.Button" parent="Widget.Material3.Button">
         <item name="android:backgroundTint">@color/violet</item>
         <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">8dp</item>
     </style>
 
     <style name="Widget.DriveNextApp.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">

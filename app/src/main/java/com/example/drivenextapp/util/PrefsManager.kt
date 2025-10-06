@@ -36,11 +36,11 @@ class PrefsManager(context: Context) {
     // Проверка валидности токена
     fun isAccessTokenValid(): Boolean {
         val token = getAccessToken()
-        // Здесь можно добавить реальную проверку, например, по сроку действия
+        // Нужно добавить реальную проверку
         return !token.isNullOrEmpty()
     }
 
-    // Удаляем токен (например, при выходе)
+    // Удаляем токен
     fun clearAccessToken() {
         prefs.edit().remove(KEY_ACCESS_TOKEN).apply()
     }

@@ -112,8 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/log_in"
-            android:textSize="14sp"
-            app:cornerRadius="8dp" />
+            android:textSize="14sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGoogle"
@@ -125,7 +124,6 @@
             android:backgroundTint="@android:color/white"
             app:strokeColor="@color/lightGrey"
             app:strokeWidth="1dp"
-            app:cornerRadius="8dp"
             app:icon="@drawable/ic_google_logo"
             app:iconTint="@null"
             app:iconGravity="textStart"

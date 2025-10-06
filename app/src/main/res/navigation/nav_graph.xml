@@ -139,5 +139,8 @@
         android:id="@+id/homepageFragment"
         android:name="com.example.drivenextapp.ui.search.HomepageFragment"
         android:label="Homepage">
+        <action
+            android:id="@+id/action_homepageFragment_to_gettingStartedFragment"
+            app:destination="@id/gettingStartedFragment" />
     </fragment>
 </navigation>

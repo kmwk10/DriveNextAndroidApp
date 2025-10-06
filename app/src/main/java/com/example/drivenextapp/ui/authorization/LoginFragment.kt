@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.example.drivenextapp.R
 import com.example.drivenextapp.data.AuthRepository
+import com.example.drivenextapp.util.PrefsManager
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -46,8 +48,8 @@ class LoginFragment : Fragment() {
     }
 
     private fun validateAndLogin() {
-        val email = emailEdit.text.toString()
-        val password = passwordEdit.text.toString()
+        val email = emailEdit.text?.toString().orEmpty()
+        val password = passwordEdit.text?.toString().orEmpty()
 
         var valid = true
 
@@ -67,9 +69,19 @@ class LoginFragment : Fragment() {
 
         if (!valid) return
 
-        // Тестовая проверка
         if (AuthRepository.checkCredentials(email, password)) {
-            findNavController().navigate(R.id.action_loginFragment_to_homepageFragment)
+            // Сохраняем тестовый токен для проверок между запусками
+            val prefs = PrefsManager(requireContext())
+            val testToken = "test_token_for_$email" // <- временный токен
+            prefs.saveAccessToken(testToken)
+
+            // Навигация на главный экран и очистка back stack
+            val options = navOptions {
+                popUpTo(R.id.loginFragment) {
+                    inclusive = true
+                }
+            }
+            findNavController().navigate(R.id.action_loginFragment_to_homepageFragment, null, options)
         } else {
             passwordLayout.error = "Неверные данные"
         }
