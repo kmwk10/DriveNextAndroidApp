@@ -57,4 +57,7 @@
     <string name="error_required">Это поле является обязательным</string>
     <string name="error_invalid_email">Введите корректный email</string>
     <string name="error_incorrect_credentials">Неверные данные</string>
+    <string name="error_driver_license_photo">Загрузите фото водительского удостоверения</string>
+    <string name="error_passport_photo">Загрузите фото паспорта</string>
+
 </resources>

@@ -34,7 +34,7 @@ object RegisterRepository {
     fun isBirthDateValid(): Boolean = currentData.birthDate != null
     fun isGenderValid(): Boolean = currentData.gender != null
 
-    fun isDriverLicenseNumberValid(): Boolean = currentData.driverLicenseNumber.isNotBlank()
+    fun isDriverLicenseNumberValid(): Boolean = currentData.driverLicenseNumber.length == 10
     fun isDriverLicenseIssueDateValid(): Boolean = currentData.driverLicenseIssueDate != null
     fun isDriverLicensePhotoValid(): Boolean = currentData.driverLicensePhoto != null
     fun isPassportPhotoValid(): Boolean = currentData.passportPhoto != null
@@ -84,7 +84,6 @@ object RegisterRepository {
 
         if (!isDriverLicenseNumberValid()) errors["licenseNumber"] = "Это поле является обязательным"
         if (!isDriverLicenseIssueDateValid()) errors["licenseDate"] = "Выберите дату выдачи"
-        if (!isProfilePhotoValid()) errors["profilePhoto"] = "Загрузите фото профиля"
         if (!isDriverLicensePhotoValid()) errors["licensePhoto"] = "Загрузите фото водительского удостоверения"
         if (!isPassportPhotoValid()) errors["passportPhoto"] = "Загрузите фото паспорта"
 
