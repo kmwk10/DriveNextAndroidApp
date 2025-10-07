@@ -73,7 +73,7 @@ class SignUpFragment1 : Fragment() {
                     chkError.visibility = View.VISIBLE
                 } else {
                     chkError.text = ""
-                    chkError.visibility = View.GONE
+                    chkError.visibility = View.INVISIBLE
                 }
             }
         }

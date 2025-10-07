@@ -126,7 +126,7 @@ class SignUpFragment3 : Fragment() {
             // Сбрасываем ошибки
             licenseLayout.error = null
             licenseDateLayout.error = null
-            photoError.visibility = View.GONE
+            photoError.visibility = View.INVISIBLE
             photoError.text = ""
 
             // Текстовые поля

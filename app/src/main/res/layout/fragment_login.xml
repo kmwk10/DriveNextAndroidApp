@@ -32,7 +32,6 @@
             android:layout_height="wrap_content"
             android:text="@string/enter_details"
             android:textColor="@color/blueGray"
-            android:textSize="14sp"
             android:layout_marginBottom="60dp"/>
 
         <TextView
@@ -41,8 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:text="@string/email"
-            android:textColor="@color/gray"
-            android:textSize="14sp"/>
+            android:textColor="@color/gray" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailLayout"
@@ -50,11 +48,7 @@
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@color/lightGrey"
-            android:textColorHint="@color/blueGray"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusBottomEnd="8dp">
+            android:textColorHint="@color/blueGray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
@@ -71,8 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:text="@string/password"
-            android:textColor="@color/gray"
-            android:textSize="14sp"/>
+            android:textColor="@color/gray" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordLayout"
@@ -82,11 +75,7 @@
             app:boxStrokeColor="@color/lightGrey"
             app:endIconMode="password_toggle"
             app:endIconTint="@color/lightGrey"
-            android:textColorHint="@color/blueGray"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusBottomEnd="8dp">
+            android:textColorHint="@color/blueGray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
@@ -103,7 +92,6 @@
             android:layout_height="wrap_content"
             android:text="@string/forgot_password"
             android:textColor="@color/violet"
-            android:textSize="14sp"
             android:layout_marginBottom="28dp"/>
 
         <com.google.android.material.button.MaterialButton
@@ -111,15 +99,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="@string/log_in"
-            android:textSize="14sp" />
+            android:text="@string/log_in" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGoogle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/log_in_google"
-            android:textSize="14sp"
             android:textColor="@color/darkGray"
             android:backgroundTint="@android:color/white"
             app:strokeColor="@color/lightGrey"
@@ -137,7 +123,6 @@
             android:clickable="true"
             android:focusable="true"
             android:text="@string/register"
-            android:textSize="14sp"
             android:textColor="@color/violet"
             android:layout_marginTop="8dp"/>
 

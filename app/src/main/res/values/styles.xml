@@ -9,5 +9,9 @@
     <style name="Widget.DriveNextApp.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="hintEnabled">false</item>
         <item name="helperText">" "</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
     </style>
 </resources>

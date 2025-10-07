@@ -51,7 +51,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email"
-            android:textSize="14sp"
             android:textColor="@color/gray"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -60,11 +59,7 @@
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@color/lightGrey"
-            android:textColorHint="@color/blueGray"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusBottomEnd="8dp">
+            android:textColorHint="@color/blueGray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
@@ -79,7 +74,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/create_password"
-            android:textSize="14sp"
             android:textColor="@color/gray"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -90,11 +84,7 @@
             app:boxStrokeColor="@color/lightGrey"
             android:textColorHint="@color/blueGray"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/lightGrey"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusBottomEnd="8dp">
+            app:endIconTint="@color/lightGrey">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
@@ -109,23 +99,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/repeat_password"
-            android:textSize="14sp"
             android:textColor="@color/gray"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/confirmPasswordLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             app:boxBackgroundMode="outline"
             app:boxStrokeColor="@color/lightGrey"
             android:textColorHint="@color/blueGray"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/lightGrey"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusBottomEnd="8dp">
+            app:endIconTint="@color/lightGrey">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etConfirmPassword"
@@ -151,8 +135,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/red"
             android:textSize="12sp"
-            android:paddingHorizontal="31dp"
-            android:visibility="gone" />
+            android:paddingHorizontal="16dp"
+            android:lines="2"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
