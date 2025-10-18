@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="profile"
+            android:text="become host (add car)"
             android:textColor="@color/black"
             android:layout_marginBottom="20dp" />
 

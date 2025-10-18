@@ -4,6 +4,18 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
+    <action
+        android:id="@+id/action_global_homepageFragment"
+        app:destination="@id/homepageFragment" />
+
+    <action
+        android:id="@+id/action_global_favoritesFragment"
+        app:destination="@id/favoritesFragment" />
+
+    <action
+        android:id="@+id/action_global_settingsFragment"
+        app:destination="@id/settingsFragment" />
+
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.drivenextapp.ui.common.SplashFragment"
@@ -142,24 +154,12 @@
         <action
             android:id="@+id/action_homepageFragment_to_gettingStartedFragment"
             app:destination="@id/gettingStartedFragment" />
-        <action
-            android:id="@+id/action_homepageFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment" />
-        <action
-            android:id="@+id/action_homepageFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.drivenextapp.ui.favorities.FavoritesFragment"
         android:label="Favorites">
-        <action
-            android:id="@+id/action_favoritesFragment_to_homepageFragment"
-            app:destination="@id/homepageFragment" />
-        <action
-            android:id="@+id/action_favoritesFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -167,10 +167,31 @@
         android:name="com.example.drivenextapp.ui.settings.SettingsFragment"
         android:label="Settings">
         <action
-            android:id="@+id/action_settingsFragment_to_homepageFragment"
-            app:destination="@id/homepageFragment" />
+            android:id="@+id/action_settingsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_settingsFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment" />
+            android:id="@+id/action_settingsFragment_to_bookingsFragment"
+            app:destination="@id/bookingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_becomeHostFragment"
+            app:destination="@id/becomeHostFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.drivenextapp.ui.settings.ProfileFragment"
+        android:label="Profile">
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookingsFragment"
+        android:name="com.example.drivenextapp.ui.bookingCar.BookingsFragment"
+        android:label="Bookings">
+    </fragment>
+
+    <fragment
+        android:id="@+id/becomeHostFragment"
+        android:name="com.example.drivenextapp.ui.addCar.BecomeHostFragment"
+        android:label="Become host">
     </fragment>
 </navigation>

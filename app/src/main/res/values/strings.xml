@@ -59,5 +59,9 @@
     <string name="error_incorrect_credentials">Неверные данные</string>
     <string name="error_driver_license_photo">Загрузите фото водительского удостоверения</string>
     <string name="error_passport_photo">Загрузите фото паспорта</string>
+    <string name="settings">Настройки</string>
+    <string name="arrow_right">Стрекла вправо</string>
+    <string name="my_bookings">Мои бронирования</string>
+    <string name="theme">Тема</string>
 
 </resources>
