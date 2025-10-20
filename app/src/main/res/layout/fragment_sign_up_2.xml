@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/lightGrey"
+            app:boxStrokeColor="@color/lightGray"
             android:textColorHint="@color/blueGray">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/lightGrey"
+            app:boxStrokeColor="@color/lightGray"
             android:textColorHint="@color/blueGray">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -103,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/lightGrey"
+            app:boxStrokeColor="@color/lightGray"
             android:textColorHint="@color/blueGray">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -126,7 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/lightGrey"
+            app:boxStrokeColor="@color/lightGray"
             android:textColorHint="@color/blueGray"
             app:startIconDrawable="@drawable/ic_calendar"
             app:startIconTint="@color/darkGray">

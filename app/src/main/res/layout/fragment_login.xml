@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/lightGrey"
+            app:boxStrokeColor="@color/lightGray"
             android:textColorHint="@color/blueGray">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -72,9 +72,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/lightGrey"
+            app:boxStrokeColor="@color/lightGray"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/lightGrey"
+            app:endIconTint="@color/lightGray"
             android:textColorHint="@color/blueGray">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -108,7 +108,7 @@
             android:text="@string/log_in_google"
             android:textColor="@color/darkGray"
             android:backgroundTint="@android:color/white"
-            app:strokeColor="@color/lightGrey"
+            app:strokeColor="@color/lightGray"
             app:strokeWidth="1dp"
             app:icon="@drawable/ic_google_logo"
             app:iconTint="@null"

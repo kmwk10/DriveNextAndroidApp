@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/lightGrey"
+            app:boxStrokeColor="@color/lightGray"
             android:textColorHint="@color/blueGray">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -81,10 +81,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/lightGrey"
+            app:boxStrokeColor="@color/lightGray"
             android:textColorHint="@color/blueGray"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/lightGrey">
+            app:endIconTint="@color/lightGray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
@@ -106,10 +106,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/lightGrey"
+            app:boxStrokeColor="@color/lightGray"
             android:textColorHint="@color/blueGray"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/lightGrey">
+            app:endIconTint="@color/lightGray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etConfirmPassword"

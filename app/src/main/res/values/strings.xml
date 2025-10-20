@@ -63,5 +63,13 @@
     <string name="arrow_right">Стрекла вправо</string>
     <string name="my_bookings">Мои бронирования</string>
     <string name="theme">Тема</string>
+    <string name="notifications">Уведомления</string>
+    <string name="add_car">Подключить свой автомобиль</string>
+    <string name="help">Помощь</string>
+    <string name="invite">Пригласи друга</string>
+    <string name="avatar_border">Граница фото профиля</string>
+    <string name="google">Google</string>
+    <string name="logout">Выйти из профиля</string>
+    <string name="change_password">Поменять пароль</string>
 
 </resources>
