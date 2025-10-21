@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Switch
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.drivenextapp.R
 import com.example.drivenextapp.data.RegisterRepository
 import androidx.core.net.toUri
+import com.example.drivenextapp.data.AuthRepository
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
@@ -73,22 +75,15 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     }
 
     private fun refreshProfileUi() {
-        // Берём актуальные данные из RegisterRepository.currentData
-        val reg = RegisterRepository.currentData
+        val user = AuthRepository.getCurrentUser()
+        if (user == null) return
 
-        // Имя и фамилия
-        val name = if (reg.name.isNotBlank()) {
-            "${reg.name} ${reg.surname}"
-        } else {
-            reg.surname
-        }
-
+        val name = "${user.name} ${user.surname}".trim()
         tvName?.text = name
-        tvEmail?.text = reg.email
+        tvEmail?.text = user.email
 
-        // Аватар: если profilePhoto != null — используем setImageURI, иначе placeholder
         try {
-            val uri = reg.profilePhoto
+            val uri = user.profilePhoto
             if (uri != null) {
                 imgAvatar?.setImageURI(uri)
             } else {
@@ -98,4 +93,5 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             imgAvatar?.setImageResource(R.drawable.ic_profile_placeholder)
         }
     }
+
 }

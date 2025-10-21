@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.drivenextapp.data.AuthRepository
 import com.example.drivenextapp.util.ConnectivityLiveData
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -40,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         connectivityLiveData.observe(this) { connected ->
             handleNetworkChange(connected)
         }
+
+        AuthRepository.init(this)
     }
 
     private fun initNav() {

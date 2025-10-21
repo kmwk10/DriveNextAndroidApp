@@ -19,7 +19,7 @@ import com.example.drivenextapp.data.CarData
 import com.example.drivenextapp.data.Result
 import com.example.drivenextapp.ui.common.LoaderFragment
 
-class HomepageFragment : Fragment() {
+class HomepageFragment : Fragment(R.layout.fragment_homepage) {
 
     private val vm: HomeViewModel by viewModels()
     private lateinit var recycler: RecyclerView
@@ -28,16 +28,16 @@ class HomepageFragment : Fragment() {
     private lateinit var layoutError: View
     private lateinit var tvErrorMessage: TextView
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_homepage, container, false)
+    private var isNavigating = false // флаг, чтобы не менять фрагмент дважды
 
-        recycler = root.findViewById(R.id.recyclerCars)
-        etSearch = root.findViewById(R.id.etSearch)
-        layoutError = root.findViewById(R.id.layoutError)
-        tvErrorMessage = root.findViewById(R.id.tvErrorMessage)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Инициализация UI
+        recycler = view.findViewById(R.id.recyclerCars)
+        etSearch = view.findViewById(R.id.etSearch)
+        layoutError = view.findViewById(R.id.layoutError)
+        tvErrorMessage = view.findViewById(R.id.tvErrorMessage)
 
         recycler.layoutManager = LinearLayoutManager(requireContext())
         adapter = CarAdapter(listOf(), onBook = { onBookClicked(it) }, onDetails = { onDetailsClicked(it) })
@@ -45,9 +45,8 @@ class HomepageFragment : Fragment() {
 
         setupListeners()
         observeViewModel()
-        vm.loadCars() // запускаем загрузку
 
-        return root
+        vm.loadCars() // запускаем загрузку
     }
 
     private fun setupListeners() {
@@ -86,8 +85,6 @@ class HomepageFragment : Fragment() {
         }
     }
 
-    private var isNavigating = false // флаг, чтобы не менять фрагмент дважды
-
     private fun performSearch(brand: String) {
         if (brand.isBlank() || isNavigating) return
 
@@ -96,7 +93,7 @@ class HomepageFragment : Fragment() {
         isNavigating = true
 
         vm.searchBrand(brand) { result ->
-            isNavigating = false // сбрасываем флаг после получения ответа
+            isNavigating = false
 
             when (result) {
                 is Result.Success -> {
@@ -104,15 +101,11 @@ class HomepageFragment : Fragment() {
                         layoutError.visibility = View.VISIBLE
                         tvErrorMessage.text = "Ничего не найдено"
                     } else {
-                        val navController = findNavController()
-                        // Проверяем, что текущий фрагмент это HomepageFragment
-                        if (navController.currentDestination?.id == R.id.homepageFragment) {
-                            val args = bundleOf(
-                                "brand" to brand,
-                                "cars" to ArrayList(result.data)
-                            )
-                            navController.navigate(R.id.action_homepageFragment_to_resultFragment, args)
-                        }
+                        val args = bundleOf(
+                            "brand" to brand,
+                            "cars" to ArrayList(result.data)
+                        )
+                        findNavController().navigate(R.id.action_homepageFragment_to_resultFragment, args)
                     }
                 }
                 is Result.Error -> {
@@ -132,5 +125,4 @@ class HomepageFragment : Fragment() {
         val args = bundleOf("carId" to car.id)
         findNavController().navigate(R.id.action_homepageFragment_to_carDetailsFragment, args)
     }
-
 }

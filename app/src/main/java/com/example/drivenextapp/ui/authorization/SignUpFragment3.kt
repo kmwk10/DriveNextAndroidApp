@@ -18,6 +18,7 @@ import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.drivenextapp.data.AuthRepository
 
 class SignUpFragment3 : Fragment() {
 
@@ -106,8 +107,10 @@ class SignUpFragment3 : Fragment() {
                 { _, year, month, dayOfMonth ->
                     val selected = Calendar.getInstance()
                     selected.set(year, month, dayOfMonth)
-                    selectedLicenseDate = selected.time
-                    etLicenseDate.setText(dateFormat.format(selectedLicenseDate!!))
+                    val date = selected.time
+                    selectedLicenseDate = date
+                    etLicenseDate.setText(dateFormat.format(date))
+                    RegisterRepository.saveDriverLicenseIssueDate(date)
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
@@ -116,20 +119,17 @@ class SignUpFragment3 : Fragment() {
         }
 
         btnNext.setOnClickListener {
-            // Сохраняем данные
+            // Сохраняем номер
             RegisterRepository.saveDriverLicenseNumber(etLicense.text?.toString()?.trim() ?: "")
-            selectedLicenseDate?.let { RegisterRepository.saveDriverLicenseIssueDate(it) }
 
             val errors = RegisterRepository.validateStep3()
             var hasErrors = false
 
-            // Сбрасываем ошибки
             licenseLayout.error = null
             licenseDateLayout.error = null
             photoError.visibility = View.INVISIBLE
             photoError.text = ""
 
-            // Текстовые поля
             errors["licenseNumber"]?.let {
                 licenseLayout.error = it
                 hasErrors = true
@@ -140,10 +140,8 @@ class SignUpFragment3 : Fragment() {
                 hasErrors = true
             }
 
-            // Проверка фото
             val missingLicensePhoto = errors.containsKey("licensePhoto")
             val missingPassportPhoto = errors.containsKey("passportPhoto")
-
             if (missingLicensePhoto || missingPassportPhoto) {
                 photoError.text = "Пожалуйста, загрузите все необходимые фото."
                 photoError.visibility = View.VISIBLE
@@ -151,12 +149,22 @@ class SignUpFragment3 : Fragment() {
             }
 
             if (!hasErrors) {
-                findNavController().navigate(R.id.action_signUpFragment3_to_signUpSuccessFragment)
-            }
-        }
+                // добавляем копию currentData в "базу" пользователей
+                RegisterRepository.addUser(RegisterRepository.currentData.copy())
 
-        ivBack.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment3_to_signUpFragment2)
+                // логиним пользователя (AuthRepository сохранит токен и установит currentUser)
+                val email = RegisterRepository.currentData.email
+                val password = RegisterRepository.currentData.password
+                val loginSuccess = AuthRepository.login(email, password)
+
+                if (loginSuccess) {
+                    // Перейти на экран успеха (или на главный экран)
+                    findNavController().navigate(R.id.action_signUpFragment3_to_signUpSuccessFragment)
+                } else {
+                    // На всякий случай (должно быть true) — показать тост
+                    android.widget.Toast.makeText(requireContext(), "Не удалось войти после регистрации", android.widget.Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 

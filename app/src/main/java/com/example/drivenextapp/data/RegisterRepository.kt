@@ -3,6 +3,7 @@ package com.example.drivenextapp.data
 import android.net.Uri
 import com.example.drivenextapp.util.ValidationUtils
 import java.util.*
+import androidx.core.net.toUri
 
 object RegisterRepository {
 
@@ -39,9 +40,11 @@ object RegisterRepository {
         val errors = mutableMapOf<String, String>()
 
         if (currentData.email.isBlank()) {
-            errors["email"] = "Это поле является обязательным"
+            errors["email"] = "Это поле является обязательным."
         } else if (!ValidationUtils.isEmailValid(currentData.email)) {
             errors["email"] = "Введите корректный адрес электронной почты."
+        } else if (isEmailTaken(currentData.email)) {
+            errors["email"] = "Этот email уже занят."
         }
 
         if (currentData.password.isBlank()) {
@@ -87,5 +90,76 @@ object RegisterRepository {
         if (!isPassportPhotoValid()) errors["passportPhoto"] = "Загрузите фото паспорта"
 
         return errors
+    }
+
+    // Эмуляция базы данных пользователей
+    private val users = mutableListOf<RegisterData>()
+
+    val testUsers = listOf(
+        RegisterData(
+            email = "ivan.ivanov@mail.com",
+            password = "pass1234",
+            surname = "Иванов",
+            name = "Иван",
+            patronymic = "Сергеевич",
+            birthDate = Date(95, 4, 12), // 12 мая 1995
+            gender = Gender.MALE,
+            driverLicenseNumber = "1234567890",
+            driverLicenseIssueDate = Date(120, 6, 5), // 5 июля 2020
+            profilePhoto = "android.resource://com.example.drivenextapp/drawable/profile_ivan".toUri(),
+        ),
+        RegisterData(
+            email = "anna.petrova@mail.com",
+            password = "qwerty123",
+            surname = "Петрова",
+            name = "Анна",
+            patronymic = "Игоревна",
+            birthDate = Date(98, 10, 3), // 3 ноября 1998
+            gender = Gender.FEMALE,
+            driverLicenseNumber = "0987654321",
+            driverLicenseIssueDate = Date(122, 2, 14), // 14 марта 2022
+        )
+    )
+
+    var currentUser: RegisterData? = null
+        private set
+
+    fun isEmailTaken(email: String): Boolean {
+        return users.any { it.email.equals(email, true) }
+    }
+
+    fun addTestUsers() {
+        if (users.isEmpty()) {
+            users.addAll(testUsers)
+        }
+    }
+
+    fun findUserByEmail(email: String): RegisterData? {
+        val e = email.trim()
+        return users.find { it.email.trim().equals(e, ignoreCase = true) }
+    }
+
+    fun setCurrentUser(user: RegisterData?) {
+        currentUser = user
+    }
+    fun addUser(user: RegisterData) {
+        // Проверяем, что email уникален
+        if (!isEmailTaken(user.email)) {
+            users.add(user)
+        }
+    }
+    fun loginUser(email: String, password: String): Boolean {
+        val e = email.trim()
+        val p = password // если хотите, можно тоже trim()
+        val user = users.find { it.email.trim().equals(e, ignoreCase = true) && it.password == p }
+        return if (user != null) {
+            currentUser = user
+            true
+        } else {
+            false
+        }
+    }
+    fun logout() {
+        currentUser = null
     }
 }
