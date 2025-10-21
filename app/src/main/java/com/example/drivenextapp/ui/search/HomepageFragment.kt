@@ -82,6 +82,11 @@ class HomepageFragment : Fragment(R.layout.fragment_homepage) {
         vm.errorMessage.observe(viewLifecycleOwner) { error ->
             layoutError.visibility = if (error != null) View.VISIBLE else View.GONE
             tvErrorMessage.text = error ?: ""
+
+            // Показываем Toast при ошибке
+            error?.let {
+                android.widget.Toast.makeText(requireContext(), "Не удалось загрузить данные. Попробуйте снова.", android.widget.Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -111,6 +116,7 @@ class HomepageFragment : Fragment(R.layout.fragment_homepage) {
                 is Result.Error -> {
                     layoutError.visibility = View.VISIBLE
                     tvErrorMessage.text = result.message
+                    android.widget.Toast.makeText(requireContext(), "Не удалось выполнить поиск. Попробуйте снова.", android.widget.Toast.LENGTH_SHORT).show()
                 }
             }
         }

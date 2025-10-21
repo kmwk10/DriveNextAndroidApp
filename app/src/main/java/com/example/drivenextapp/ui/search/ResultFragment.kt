@@ -54,19 +54,6 @@ class ResultFragment : Fragment() {
         return root
     }
 
-
-    private fun searchBrand(brand: String) {
-        val vm: HomeViewModel by viewModels()
-        vm.searchBrand(brand) { result ->
-            when (result) {
-                is Result.Success -> {
-                    adapter.submitList(result.data)
-                }
-                is Result.Error -> {}
-            }
-        }
-    }
-
     private fun onBookClicked(car: CarData) {
         val args = bundleOf("carId" to car.id)
         findNavController().navigate(R.id.action_resultFragment_to_checkoutFragment, args)
