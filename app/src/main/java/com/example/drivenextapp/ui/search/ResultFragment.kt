@@ -5,14 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.navigation.fragment.findNavController
 import androidx.core.os.bundleOf
 import com.example.drivenextapp.R
 import com.example.drivenextapp.data.CarData
-import com.example.drivenextapp.data.Result
 
 class ResultFragment : Fragment() {
 
@@ -62,18 +60,6 @@ class ResultFragment : Fragment() {
     private fun onDetailsClicked(car: CarData) {
         val args = bundleOf("carId" to car.id)
         findNavController().navigate(R.id.action_resultFragment_to_carDetailsFragment, args)
-    }
-
-
-    companion object {
-        private const val ARG_BRAND = "brand"
-        fun newInstance(brand: String): ResultFragment {
-            val fragment = ResultFragment()
-            val args = Bundle()
-            args.putString(ARG_BRAND, brand)
-            fragment.arguments = args
-            return fragment
-        }
     }
 }
 
