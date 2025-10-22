@@ -44,7 +44,7 @@ class ResultFragment : Fragment() {
 
         btnBack.setOnClickListener { findNavController().popBackStack() }
 
-        // Отображаем карточки сразу, если список пришёл через аргументы
+        // Отображаем карточки, если список пришёл через аргументы
         cars?.let {
             adapter.submitList(it)
         }

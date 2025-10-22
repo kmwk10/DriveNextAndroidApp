@@ -12,10 +12,10 @@ object AuthRepository {
         // Добавляем тестовых пользователей при первом запуске
         RegisterRepository.addTestUsers()
 
-        // Попробуем восстановить текущего пользователя по токену (в нашем случае токен = email)
+        // Пробуем восстановить текущего пользователя по токену
         val token = prefs?.getAccessToken()
         if (!token.isNullOrBlank()) {
-            // если в users есть пользователь с таким email — установим его как currentUser
+            // если в users есть пользователь с таким email - устанавливаем его как currentUser
             RegisterRepository.findUserByEmail(token)?.let { user ->
                 RegisterRepository.setCurrentUser(user)
             }
@@ -25,7 +25,7 @@ object AuthRepository {
     fun login(email: String, password: String): Boolean {
         val success = RegisterRepository.loginUser(email, password)
         if (success) {
-            // Сохраняем "токен" (временно email вместо токена)
+            // Сохраняем токен (пока email вместо токена)
             prefs?.saveAccessToken(email)
         }
         return success
@@ -34,10 +34,6 @@ object AuthRepository {
     fun logout() {
         prefs?.clearAccessToken()
         RegisterRepository.logout()
-    }
-
-    fun isLoggedIn(): Boolean {
-        return prefs?.isAccessTokenValid() == true
     }
 
     fun getCurrentUser(): RegisterData? {

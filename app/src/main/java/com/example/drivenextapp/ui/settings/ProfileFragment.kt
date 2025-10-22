@@ -73,27 +73,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun displayUser(user: RegisterData) {
-        // Имя
         val name = listOfNotNull(
             user.name.takeIf { it.isNotBlank() },
             user.surname.takeIf { it.isNotBlank() }
         ).joinToString(" ")
         tvName.text = name
 
-        // Email
         tvEmail.text = user.email
 
-        // Пол
         tvGender.text = when (user.gender) {
             com.example.drivenextapp.data.Gender.MALE -> "Мужской"
             com.example.drivenextapp.data.Gender.FEMALE -> "Женский"
             else -> "Не указан"
         }
 
-        // Google-почта (можно дублировать email пользователя)
         tvGoogleAccount.text = user.email
 
-        // Аватар
         val uri = user.profilePhoto
         if (uri != null) {
             try {

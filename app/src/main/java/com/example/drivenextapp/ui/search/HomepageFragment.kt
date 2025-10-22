@@ -46,9 +46,10 @@ class HomepageFragment : Fragment(R.layout.fragment_homepage) {
         setupListeners()
         observeViewModel()
 
-        vm.loadCars() // запускаем загрузку
+        vm.loadCars() // Запускаем загрузку
     }
 
+    // Обработка нажатия Enter/Search
     private fun setupListeners() {
         etSearch.setOnEditorActionListener { _, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH || (event?.keyCode == KeyEvent.KEYCODE_ENTER)) {
@@ -58,14 +59,16 @@ class HomepageFragment : Fragment(R.layout.fragment_homepage) {
         }
     }
 
+    // Подписка на LiveData
     private fun observeViewModel() {
         vm.cars.observe(viewLifecycleOwner) { cars ->
-            adapter.submitList(cars)
+            adapter.submitList(cars) // Обноввляем список
             recycler.visibility = if (cars.isEmpty()) View.GONE else View.VISIBLE
             layoutError.visibility = if (cars.isEmpty() && vm.errorMessage.value == null) View.VISIBLE else View.GONE
             tvErrorMessage.text = if (cars.isEmpty()) "Ничего не найдено" else ""
         }
 
+        // Показвает фрагмент загрузки
         vm.isLoading.observe(viewLifecycleOwner) { isLoading ->
             val loader = childFragmentManager.findFragmentById(R.id.loaderContainer)
             if (isLoading && loader == null) {
@@ -83,9 +86,9 @@ class HomepageFragment : Fragment(R.layout.fragment_homepage) {
             layoutError.visibility = if (error != null) View.VISIBLE else View.GONE
             tvErrorMessage.text = error ?: ""
 
-            // Показываем Toast при ошибке
+            // Показывает Toast при ошибке
             error?.let {
-                android.widget.Toast.makeText(requireContext(), "Не удалось загрузить данные. Попробуйте снова.", android.widget.Toast.LENGTH_SHORT).show()
+                android.widget.Toast.makeText(requireContext(), it, android.widget.Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -116,7 +119,7 @@ class HomepageFragment : Fragment(R.layout.fragment_homepage) {
                 is Result.Error -> {
                     layoutError.visibility = View.VISIBLE
                     tvErrorMessage.text = result.message
-                    android.widget.Toast.makeText(requireContext(), "Не удалось выполнить поиск. Попробуйте снова.", android.widget.Toast.LENGTH_SHORT).show()
+                    android.widget.Toast.makeText(requireContext(), result.message, android.widget.Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -2,12 +2,14 @@ package com.example.drivenextapp.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.edit
 
 class PrefsManager(context: Context) {
 
     private val prefs: SharedPreferences =
         context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
+    // Константы класса
     companion object {
         private const val PREFS_NAME = "drive_next_prefs"
         private const val KEY_FIRST_LAUNCH = "first_launch"
@@ -18,14 +20,14 @@ class PrefsManager(context: Context) {
     fun isFirstLaunch(): Boolean {
         val firstLaunch = prefs.getBoolean(KEY_FIRST_LAUNCH, true)
         if (firstLaunch) {
-            prefs.edit().putBoolean(KEY_FIRST_LAUNCH, false).apply()
+            prefs.edit { putBoolean(KEY_FIRST_LAUNCH, false) }
         }
         return firstLaunch
     }
 
     // Сохраняем access token
     fun saveAccessToken(token: String) {
-        prefs.edit().putString(KEY_ACCESS_TOKEN, token).apply()
+        prefs.edit { putString(KEY_ACCESS_TOKEN, token) }
     }
 
     // Получаем access token
@@ -42,6 +44,6 @@ class PrefsManager(context: Context) {
 
     // Удаляем токен
     fun clearAccessToken() {
-        prefs.edit().remove(KEY_ACCESS_TOKEN).apply()
+        prefs.edit { remove(KEY_ACCESS_TOKEN) }
     }
 }

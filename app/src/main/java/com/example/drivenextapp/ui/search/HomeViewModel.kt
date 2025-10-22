@@ -38,8 +38,6 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun retryLoad() = loadCars()
-
     fun searchBrand(brand: String, onResult: (Result<List<CarData>>) -> Unit) {
         if (brand.isBlank()) {
             onResult(Result.Success(emptyList()))

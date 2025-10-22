@@ -60,8 +60,6 @@ class MainActivity : AppCompatActivity() {
             bottomNav?.itemIconTintList = null
             bottomNav?.itemBackground = null
 
-
-
             // Слушаем смену destination, чтобы скрывать/показывать bottom nav на нужных экранах
             controller.addOnDestinationChangedListener { _, destination, _ ->
                 handleDestinationChanged(destination.id)

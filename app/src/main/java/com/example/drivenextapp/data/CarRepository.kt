@@ -1,6 +1,5 @@
 package com.example.drivenextapp.data
 
-import com.example.drivenextapp.data.CarData
 import kotlinx.coroutines.delay
 
 object CarRepository {

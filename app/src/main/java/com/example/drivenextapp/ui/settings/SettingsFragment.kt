@@ -68,7 +68,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         }
     }
 
-    // При возвращении на экран (например, после изменения профиля) — обновляем UI
+    // При возвращении на экран (например, после изменения профиля) обновляем UI
     override fun onResume() {
         super.onResume()
         refreshProfileUi()

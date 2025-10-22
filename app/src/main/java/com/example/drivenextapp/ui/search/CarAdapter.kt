@@ -19,9 +19,11 @@ class CarAdapter(
 
     fun submitList(list: List<CarData>) {
         this.items = list
+        // Уведомляем RecyclerView, что данные изменились и нужно перерисовать список
         notifyDataSetChanged()
     }
 
+    // Хранит ссылки на элементы внутри одного элемента списка
     class Holder(view: View) : RecyclerView.ViewHolder(view) {
         val tvModel: TextView = view.findViewById(R.id.tvModel)
         val tvBrand: TextView = view.findViewById(R.id.tvBrand)
@@ -33,17 +35,19 @@ class CarAdapter(
         val btnDetails: Button = view.findViewById(R.id.btnDetails)
     }
 
+    // Создание нового элемента списка
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_car, parent, false)
         return Holder(v)
     }
 
+    // Заполнение элемента данными после создания
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val car = items[position]
         holder.tvModel.text = car.model
         holder.tvBrand.text = car.brand
 
-        holder.tvPrice.text = "${car.pricePerDay}₽"
+        holder.tvPrice.text = "${car.pricePerDay}₽ "
 
         holder.tvGearbox.text = car.gearbox
         holder.tvFuel.text = car.fuel
