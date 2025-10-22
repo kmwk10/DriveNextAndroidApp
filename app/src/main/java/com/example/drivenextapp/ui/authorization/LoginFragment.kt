@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.example.drivenextapp.R
 import com.example.drivenextapp.data.AuthRepository
-import com.example.drivenextapp.util.PrefsManager
 import com.example.drivenextapp.util.ValidationUtils
 import com.example.drivenextapp.util.getTextOrEmpty
 import com.example.drivenextapp.util.showError
@@ -41,9 +40,7 @@ class LoginFragment : Fragment() {
         passwordLayout = view.findViewById(R.id.passwordLayout)
         loginButton = view.findViewById(R.id.btnLogin)
 
-        loginButton.setOnClickListener {
-            validateAndLogin()
-        }
+        loginButton.setOnClickListener { validateAndLogin() }
 
         view.findViewById<View>(R.id.tvRegister).setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signUpFragment1)
@@ -56,6 +53,7 @@ class LoginFragment : Fragment() {
 
         var valid = true
 
+        // Валидация email
         if (email.isBlank()) {
             emailLayout.showError(getString(R.string.error_required))
             valid = false
@@ -64,29 +62,24 @@ class LoginFragment : Fragment() {
             valid = false
         } else emailLayout.showError(null)
 
+        // Валидация пароля
         if (password.isBlank()) {
             passwordLayout.showError(getString(R.string.error_required))
-            passwordLayout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
             valid = false
         } else passwordLayout.showError(null)
 
         if (!valid) return
 
-        if (AuthRepository.checkCredentials(email, password)) {
-            // Сохраняем тестовый токен для проверок между запусками
-            val prefs = PrefsManager(requireContext())
-            val testToken = "test_token_for_$email" // <- временный токен
-            prefs.saveAccessToken(testToken)
-
-            // Навигация на главный экран и очистка back stack
+        // Логин через AuthRepository
+        val success = AuthRepository.login(email, password)
+        if (success) {
+            // Навигация на главный экран с очисткой back stack
             val options = navOptions {
-                popUpTo(R.id.loginFragment) {
-                    inclusive = true
-                }
+                popUpTo(R.id.loginFragment) { inclusive = true }
             }
             findNavController().navigate(R.id.action_loginFragment_to_homepageFragment, null, options)
         } else {
-            passwordLayout.error = "Неверные данные"
+            passwordLayout.showError("Неверные данные")
         }
     }
 }

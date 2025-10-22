@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/settingsScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.settings.SettingsFragment"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp" />
+
+    <LinearLayout
+        android:id="@+id/itemProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:contentDescription="@string/acc_photo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_profile_photo"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Corner.Circle"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Имя Фамилия"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="email@example.com"
+                android:textColor="@color/lightGray"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/arrow_right"
+            android:src="@drawable/ic_arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemBookings"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/my_bookings"
+            android:src="@drawable/ic_bookings"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="@string/my_bookings"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/arrow_right"
+            android:src="@drawable/ic_arrow_right"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemTheme"
+        style="@style/SettingsItem">
+        <ImageView
+            android:id="@+id/iconTheme"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/theme"
+            android:src="@drawable/ic_theme" />
+
+        <TextView
+            android:id="@+id/textTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="@string/theme"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/arrowTheme"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/arrow_right"
+            android:src="@drawable/ic_arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemNotifications"
+        style="@style/SettingsItem">
+        <ImageView
+            android:id="@+id/iconNotifications"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/notifications"
+            android:src="@drawable/ic_notifications" />
+
+        <TextView
+            android:id="@+id/textNotifications"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="@string/notifications"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/arrowNotifications"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/arrow_right"
+            android:src="@drawable/ic_arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemAddCar"
+        style="@style/SettingsItem">
+        <ImageView
+            android:id="@+id/iconAddCar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/add_car"
+            android:src="@drawable/ic_add_car" />
+
+        <TextView
+            android:id="@+id/textAddCar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="@string/add_car"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/arrowAddCar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/arrow_right"
+            android:src="@drawable/ic_arrow_right" />
+    </LinearLayout>
+
+    <!-- Разделительная линия -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="8dp"
+        android:background="@color/lightGray" />
+
+    <LinearLayout
+        android:id="@+id/itemHelp"
+        style="@style/SettingsItem">
+        <ImageView
+            android:id="@+id/iconHelp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/help"
+            android:src="@drawable/ic_help" />
+
+        <TextView
+            android:id="@+id/textHelp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="@string/help"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/arrowHelp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/arrow_right"
+            android:src="@drawable/ic_arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemInvite"
+        style="@style/SettingsItem">
+        <ImageView
+            android:id="@+id/iconInvite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/invite"
+            android:src="@drawable/ic_invite" />
+
+        <TextView
+            android:id="@+id/textInvite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="@string/invite"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/arrowInvite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/arrow_right"
+            android:src="@drawable/ic_arrow_right" />
+    </LinearLayout>
+</LinearLayout>

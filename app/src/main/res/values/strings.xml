@@ -59,5 +59,28 @@
     <string name="error_incorrect_credentials">Неверные данные</string>
     <string name="error_driver_license_photo">Загрузите фото водительского удостоверения</string>
     <string name="error_passport_photo">Загрузите фото паспорта</string>
+    <string name="settings">Настройки</string>
+    <string name="arrow_right">Стрекла вправо</string>
+    <string name="my_bookings">Мои бронирования</string>
+    <string name="theme">Тема</string>
+    <string name="notifications">Уведомления</string>
+    <string name="add_car">Подключить свой автомобиль</string>
+    <string name="help">Помощь</string>
+    <string name="invite">Пригласи друга</string>
+    <string name="avatar_border">Граница фото профиля</string>
+    <string name="google">Google</string>
+    <string name="logout">Выйти из профиля</string>
+    <string name="change_password">Поменять пароль</string>
+    <string name="book">Забронировать</string>
+    <string name="details">Детали</string>
+    <string name="per_day">&#032;в день</string>
+    <string name="gearbox">A/T</string>
+    <string name="fuel">Бензин</string>
+    <string name="try_again_help">Не удалось загрузить данные.\nПопробуйте снова.</string>
+    <string name="find_car">Давайте найдём автомобиль</string>
+    <string name="enter_car_brand">Введите марку автомобиля</string>
+    <string name="car_photo">Фото автомобиля</string>
+    <string name="search_result">Результаты поиска</string>
+    <string name="search_for_cars">Ищем подходящие автомобили</string>
 
 </resources>

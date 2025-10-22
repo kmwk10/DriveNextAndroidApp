@@ -1,18 +1,26 @@
 package com.example.drivenextapp
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.example.drivenextapp.data.AuthRepository
 import com.example.drivenextapp.util.ConnectivityLiveData
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var connectivityLiveData: ConnectivityLiveData
     private var isNavControllerReady = false
+
+    // Кешируем NavController и BottomNavigationView
+    private var navController: NavController? = null
+    private var bottomNav: BottomNavigationView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,15 +33,72 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        // Инициализируем NavController и BottomNavigationView (если есть в layout)
+        initNav()
+
         // Инициализируем наблюдение за сетью
         connectivityLiveData = ConnectivityLiveData(this)
         connectivityLiveData.observe(this) { connected ->
             handleNetworkChange(connected)
         }
+
+        AuthRepository.init(this)
+    }
+
+    private fun initNav() {
+        try {
+            val navHostFragment = supportFragmentManager
+                .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+            navController = navHostFragment?.navController
+
+            val controller = navController ?: return
+
+            bottomNav = findViewById(R.id.bottom_nav)
+            bottomNav?.let { bn ->
+                NavigationUI.setupWithNavController(bn, controller)
+            }
+            bottomNav?.itemIconTintList = null
+            bottomNav?.itemBackground = null
+
+            // Слушаем смену destination, чтобы скрывать/показывать bottom nav на нужных экранах
+            controller.addOnDestinationChangedListener { _, destination, _ ->
+                handleDestinationChanged(destination.id)
+            }
+
+            isNavControllerReady = true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            navController = null
+            isNavControllerReady = false
+        }
+    }
+
+    private fun handleDestinationChanged(destinationId: Int) {
+        val bottom = bottomNav ?: return
+
+        val hideOn = setOf(
+            R.id.gettingStartedFragment,
+            R.id.loginFragment,
+            R.id.signUpFragment1,
+            R.id.signUpFragment2,
+            R.id.signUpFragment3,
+            R.id.signUpSuccessFragment,
+            R.id.noConnectionFragment,
+            R.id.splashFragment,
+            R.id.onboardingFragment1,
+            R.id.onboardingFragment2,
+            R.id.onboardingFragment3
+        )
+
+        if (hideOn.contains(destinationId)) {
+            bottom.visibility = View.GONE
+        } else {
+            bottom.visibility = View.VISIBLE
+        }
     }
 
     private fun getNavController(): NavController? {
-        return try {
+        return navController ?: try {
             val navHostFragment = supportFragmentManager
                 .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
             navHostFragment?.navController
@@ -76,5 +141,9 @@ class MainActivity : AppCompatActivity() {
         connectivityLiveData.value?.let { connected ->
             handleNetworkChange(connected)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return getNavController()?.navigateUp() ?: super.onSupportNavigateUp()
     }
 }
