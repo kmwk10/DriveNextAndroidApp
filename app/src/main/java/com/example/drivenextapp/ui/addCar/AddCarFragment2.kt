@@ -10,12 +10,15 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.drivenextapp.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
 class AddCarFragment2 : Fragment() {
+
+    private val vm: AddCarViewModel by viewModels({ requireActivity() })
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,19 +51,31 @@ class AddCarFragment2 : Fragment() {
         )
         actTransmission.setAdapter(adapter)
 
-        // Показ списка при клике на поле
         actTransmission.setOnClickListener {
             actTransmission.showDropDown()
         }
 
+        // Восстанавливаем данные из ViewModel
+        vm.year?.let { etYear.setText(it) }
+        vm.brand?.let { etBrand.setText(it) }
+        vm.model?.let { etModel.setText(it) }
+        vm.transmission?.let { actTransmission.setText(it, false) }
+        vm.mileage?.let { etMileage.setText(it) }
+        vm.description?.let { etDescription.setText(it) }
 
-        // TextWatcher для всех остальных полей
+        btnSubmit.isEnabled = areAllFieldsFilled(etYear, etBrand, etModel, actTransmission, etMileage)
+
         val watcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 btnSubmit.isEnabled = areAllFieldsFilled(
                     etYear, etBrand, etModel, actTransmission, etMileage
                 )
+                vm.year = etYear.text?.toString()
+                vm.brand = etBrand.text?.toString()
+                vm.model = etModel.text?.toString()
+                vm.mileage = etMileage.text?.toString()
+                vm.description = etDescription.text?.toString()
             }
             override fun afterTextChanged(s: Editable?) {}
         }
@@ -71,13 +86,19 @@ class AddCarFragment2 : Fragment() {
         etMileage.addTextChangedListener(watcher)
         etDescription.addTextChangedListener(watcher)
 
+        actTransmission.setOnItemClickListener { _, _, position, _ ->
+            vm.transmission = transmissionOptions[position]
+            btnSubmit.isEnabled = areAllFieldsFilled(
+                etYear, etBrand, etModel, actTransmission, etMileage
+            )
+        }
+
         ivBack.setOnClickListener {
             findNavController().navigate(R.id.action_addCarFragment2_to_addCarFragment1)
         }
 
         btnSubmit.setOnClickListener {
             if (btnSubmit.isEnabled) {
-                // Сохранение данных или переход
                 findNavController().navigate(R.id.action_addCarFragment2_to_addCarPhotosFragment)
             }
         }
