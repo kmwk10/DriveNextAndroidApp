@@ -82,5 +82,32 @@
     <string name="car_photo">Фото автомобиля</string>
     <string name="search_result">Результаты поиска</string>
     <string name="search_for_cars">Ищем подходящие автомобили</string>
+    <string name="become_host">Стать арендодателем</string>
+    <string name="become_host_description">Узнайте, что включает в себя становление арендодателем в приложении.\nПрисоединяйтесь к тысячам владельцев, зарабатывающих в приложении.</string>
+    <string name="how_it_works">Как это работает?</string>
+    <string name="how_it_works_description">Размещение бесплатное,  вы можете устанавливать свои цены, доступность и правила. Получение и возврат автомобиля просты, а оплата производится быстро после каждой поездки.</string>
+    <string name="insurance_policy">Политика страхования</string>
+    <string name="insurance_policy_description">Доступны различные уровни защиты автомобиля на случай непредвиденных ситуаций.</string>
+    <string name="we_support_you">Мы поддержим вас</string>
+    <string name="we_support_you_description">От проверки арендаторов до поддержки клиентов – вы всегда можете делиться своим автомобилем с уверенностью.</string>
+    <string name="start">Начать</string>
+    <string name="adding_car">Добавление автомобиля</string>
+    <string name="car_location">Где расположен ваш автомобиль?</string>
+    <string name="enter_address">Введите адрес</string>
+    <string name="year_of_release">Год выпуска</string>
+    <string name="year">Год</string>
+    <string name="brand">Марка</string>
+    <string name="car_brand">Марка автомобиля</string>
+    <string name="model">Модель</string>
+    <string name="mileage">Пробег</string>
+    <string name="add_description">Добавьте описание</string>
+    <string name="add_description_hint">Пожалуйста, добавьте дополнительную информацию о вашем автомобиле, которая может быть интересна арендатору. Например, о внутреннем оформлении, мощности и других особенностях вашего автомобиля.</string>
+    <string name="send">Отправить</string>
+    <string name="add_car_photos">Добавление фотографий</string>
+    <string name="add_car_photos_hint">Нажмите, чтобы добавить фото</string>
+    <string name="your_car_added">Ваш автомобиль добавлен</string>
+    <string name="success_car_adding">Поздравляем! Ваш автомобиль одобрен</string>
+    <string name="home">На главную</string>
+    <string name="transmission">Трансмиссия</string>
 
 </resources>
