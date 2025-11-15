@@ -87,7 +87,12 @@ class MainActivity : AppCompatActivity() {
             R.id.splashFragment,
             R.id.onboardingFragment1,
             R.id.onboardingFragment2,
-            R.id.onboardingFragment3
+            R.id.onboardingFragment3,
+            R.id.becomeHostFragment,
+            R.id.addCarFragment1,
+            R.id.addCarFragment2,
+            R.id.addCarPhotosFragment,
+            R.id.addCarSuccessFragment
         )
 
         if (hideOn.contains(destinationId)) {

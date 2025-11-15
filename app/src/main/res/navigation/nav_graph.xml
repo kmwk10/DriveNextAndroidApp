@@ -220,6 +220,60 @@
         android:id="@+id/becomeHostFragment"
         android:name="com.example.drivenextapp.ui.addCar.BecomeHostFragment"
         android:label="Become host">
+        <action
+            android:id="@+id/action_becomeHostFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_becomeHostFragment_to_addCarFragment1"
+            app:destination="@id/addCarFragment1" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addCarFragment1"
+        android:name="com.example.drivenextapp.ui.addCar.AddCarFragment1"
+        android:label="Add car step 1">
+        <action
+            android:id="@+id/action_addCarFragment1_to_becomeHostFragment"
+            app:destination="@id/becomeHostFragment" />
+        <action
+            android:id="@+id/action_addCarFragment1_to_addCarFragment2"
+            app:destination="@id/addCarFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addCarFragment2"
+        android:name="com.example.drivenextapp.ui.addCar.AddCarFragment2"
+        android:label="Add car step 2">
+        <action
+            android:id="@+id/action_addCarFragment2_to_addCarFragment1"
+            app:destination="@id/addCarFragment1" />
+        <action
+            android:id="@+id/action_addCarFragment2_to_addCarPhotosFragment"
+            app:destination="@id/addCarPhotosFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addCarPhotosFragment"
+        android:name="com.example.drivenextapp.ui.addCar.AddCarPhotosFragment"
+        android:label="Add car photos">
+        <action
+            android:id="@+id/action_addCarPhotosFragment_to_addCarFragment2"
+            app:destination="@id/addCarFragment2" />
+        <action
+            android:id="@+id/action_addCarPhotosFragment_to_addCarSuccessFragment"
+            app:destination="@id/addCarSuccessFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addCarSuccessFragment"
+        android:name="com.example.drivenextapp.ui.addCar.AddCarSuccessFragment"
+        android:label="Add car success">
+        <action
+            android:id="@+id/action_addCarSuccessFragment_to_addCarPhotosFragment"
+            app:destination="@id/addCarPhotosFragment" />
+        <action
+            android:id="@+id/action_addCarSuccessFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
     </fragment>
 
     <fragment
